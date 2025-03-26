@@ -5,10 +5,14 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const checked = ref(false);
+// 使用了defineModel宏，可以在模板中使用v-model指令，省略了emit和props
+const checked = defineModel<boolean>({
+    required: true,
+});
 const toggle = () => {
     checked.value = !checked.value;
 };
+
 </script>
 
 <style scoped lang="scss">
