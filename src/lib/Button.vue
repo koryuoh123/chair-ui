@@ -39,7 +39,7 @@ const props = withDefaults(defineProps<{
 
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 $bw: 80px;
 $bh: 30px;
 $radius: 4px;
