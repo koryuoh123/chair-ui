@@ -19,6 +19,12 @@
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+
+  --chair-primary-color: #409eff;
+  --chair-success-color: #67c23a;
+  --chair-danger-color: #f56c6c;
+  --chair-warning-color: #e6a23c;
+  --chair-info-color: #909399;
 }
 
 /* semantic color variables for this project */
@@ -31,9 +37,12 @@
   --color-border-hover: var(--vt-c-divider-light-1);
 
   --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
+  /* --color-text: var(--vt-c-text-light-1); */
 
   --section-gap: 160px;
+
+  --color-text-primary: var(--chair-primary-color);
+  --color-text-danger: var(--chair-danger-color);
 }
 
 @media (prefers-color-scheme: dark) {

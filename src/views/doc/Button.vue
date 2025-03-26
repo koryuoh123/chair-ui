@@ -19,6 +19,7 @@ import ButtonDemo from '@/components/ButtonDemo.vue';
 .button-container {
     display: flex;
     flex-direction: column;
+    // width: 100%;
 
     >.content {
         // border: 1px solid red;

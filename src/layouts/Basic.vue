@@ -3,7 +3,7 @@
         <Topnav class="topnav" />
         <div class="content">
             <Asidenav v-if="asideVisible" />
-            <RouterView />
+            <RouterView style="width:100%" />
         </div>
     </div>
 
@@ -40,7 +40,7 @@ onMounted(() => {
     }
 
     >.content {
-        // margin-left: 300px;
+        width: 100%;
         display: flex;
         // height: calc(100% - 50px);
         z-index: 400;

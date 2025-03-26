@@ -1,6 +1,6 @@
 <template>
     <div class="btncontainer" :size="size">
-        <button v-bind="rest">
+        <button v-bind="rest" class="chair-button" :class="{ [`theme-${props.theme}`]: props.theme }">
             <slot></slot>
         </button>
     </div>
@@ -30,16 +30,72 @@ const rest = computed(() => {
     return otherAttrs;
 });
 
+const props = withDefaults(defineProps<{
+    theme?: string;
+}>(), {
+    theme: ''
+});
+
+
 </script>
 
 <style scoped lang="scss">
-.btncontainer {
-    border: 1px solid red;
+$bw: 80px;
+$bh: 30px;
+$radius: 4px;
 
-    &[size="large"] {
-        button {
-            font-size: 20px;
+.btncontainer {
+    display: block;
+
+    &[size="small"] {
+        .chair-button {
+            width: calc($bw - 20px);
+            height: calc($bh - 5px);
         }
     }
+
+    &[size="large"] {
+        .chair-button {
+            width: calc($bw + 20px);
+            height: calc($bh + 5px);
+        }
+    }
+
+    .chair-button {
+        width: $bw;
+        height: $bh;
+        border: 1px solid gray;
+        background: #fff;
+        white-space: nowrap;
+        border-radius: $radius;
+
+        // 相同class并排时，给出间隔
+        &+& {
+            margin-left: 8px;
+        }
+
+        // firefox不会生效
+        &:focus {
+            outline: none;
+        }
+
+        // firefox会生效
+        &::-moz-focus-inner {
+            border: 0;
+        }
+
+        &.theme-primary {
+            // background-color: blue;
+            color: var(--color-text-primary);
+            border-color: var(--color-text-primary);
+        }
+
+        &.theme-danger {
+            // background-color: red;
+            color: var(--color-text-danger);
+            border-color: var(--color-text-danger);
+        }
+    }
+
 }
 </style>
