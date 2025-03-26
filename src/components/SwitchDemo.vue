@@ -1,16 +1,13 @@
 <template>
-    <Switch v-model="v" />
-    <div>{{ v }}</div>
+    <Switch v-model="checked" />
 </template>
 
 <script setup lang="ts">
 import Switch from '@/lib/Switch.vue';
 import { ref } from 'vue';
 
-const v = ref(false)
-// const toggle = () => {
-//     value.value = !value.value;
-// };
+const checked = ref(false)
+
 </script>
 
 <style scoped></style>

@@ -28,28 +28,36 @@ button {
     position: relative;
     transition: background-color .250ms; // 250ms一般用这个数
     cursor: pointer;
-}
 
-span {
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    height: $h2;
-    width: $h2;
-    background-color: white;
-    border-radius: calc($h2 / 2);
-    transition: left 250ms;
-}
-
-button.checked>span {
-    left:calc(100% - #{$h2} - 2px);
+    >span {
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        height: $h2;
+        width: $h2;
+        background-color: white;
+        border-radius: calc($h2 / 2);
+        transition: all 250ms;
+    }
 }
 
 button.checked {
     background-color: #409EFF;
+
+    >span {
+        left:calc(100% - #{$h2} - 2px);
+    }
 }
 
 button:focus {
     outline: none;
+}
+
+// 鼠标按住变胖的动画
+button.checked:active {
+    >span {
+        width: $h2 + 4px;
+        margin-left: -4px;
+    }
 }
 </style>
