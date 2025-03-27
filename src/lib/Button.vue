@@ -1,6 +1,11 @@
 <template>
-    <div class="btncontainer" :size="size">
-        <button v-bind="rest" class="chair-button" :class="{ [`chair-theme-${props.theme}`]: props.theme }">
+    <div class="chair-button-container" :size="size">
+        <button v-bind="rest" class="chair-button" :class="{
+            [`chair-theme-${props.theme}`]: props.theme,
+            disabled: props.disabled,
+            loading: props.loading
+        }" :disabled="props.disabled">
+            <SvgIcon v-if="props.loading" iconName="loading-icon" class="loading-icon" />
             <slot></slot>
         </button>
     </div>
@@ -15,6 +20,7 @@
 defineOptions({
     inheritAttrs: false
 })
+import SvgIcon from '@/components/SvgIcon.vue';
 /**
  * 通过useAttrs获取父组件传递的属性
  * 通过解构获取size属性，然后通过rest获取剩余属性
@@ -24,7 +30,7 @@ import { useAttrs, ref, computed } from 'vue';
  * 为开发者优化，使属性可以响应式变化
  */
 const attrs = useAttrs();
-const size = computed(() => attrs.size); // 响应式获取 size
+const size = computed(() => attrs.size as string); // 响应式获取 size
 const rest = computed(() => {
     const { size, ...otherAttrs } = attrs;
     return otherAttrs;
@@ -32,8 +38,12 @@ const rest = computed(() => {
 
 const props = withDefaults(defineProps<{
     theme?: string;
+    disabled?: boolean;// 既要禁用原生button的事件，又要添加禁用样式
+    loading?: boolean;
 }>(), {
-    theme: ''
+    theme: '',
+    disabled: false,
+    loading: false
 });
 
 
@@ -44,7 +54,7 @@ $bw: 80px;
 $bh: 30px;
 $radius: 4px;
 
-.btncontainer {
+.chair-button-container {
     display: block;
 
     &[size="small"] {
@@ -68,6 +78,33 @@ $radius: 4px;
         background: #fff;
         white-space: nowrap;
         border-radius: $radius;
+        cursor: pointer;
+
+        // 禁用
+        &.disabled {
+            background: #ccc;
+            color: #000;
+            cursor: not-allowed;
+            // pointer-events: none;
+        }
+
+        // loading--要看出不能点击的感觉，要屏蔽事件
+        &.loading {
+            // cursor: progress;
+            pointer-events: none;
+            opacity: 0.5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .loading-icon {
+                height: 1em;
+                width: 1em;
+                display: inline-block;
+                margin-right: 4px;
+                animation: chair-spin 1s linear infinite;
+            }
+        }
 
         // 相同class并排时，给出间隔
         &+& {
@@ -97,5 +134,15 @@ $radius: 4px;
         }
     }
 
+}
+
+@keyframes chair-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 </style>

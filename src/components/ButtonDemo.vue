@@ -11,6 +11,14 @@
         <Button @click="clickEvent" @focus="focusEvent" theme="primary">你好</Button>
         <Button @click="clickEvent" @focus="focusEvent" theme="danger">你好</Button>
     </div>
+    <h2>禁用</h2>
+    <div class="demolist">
+        <Button @click="clickEvent" @focus="focusEvent" disabled>你好</Button>
+    </div>
+    <h2>loading</h2>
+    <div class="demolist">
+        <Button @click="clickEvent" @focus="focusEvent" loading>你好</Button>
+    </div>
 </template>
 
 <script setup lang="ts">
