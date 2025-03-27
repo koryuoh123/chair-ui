@@ -27,7 +27,10 @@ const toggleAsideVisible = () => {
 }
 
 router.afterEach(() => {
-    asideVisible.value = false
+    const width = document.documentElement.clientWidth
+    if (width <= 500) {
+        asideVisible.value = false
+    }
 })
 </script>
 
@@ -40,7 +43,7 @@ router.afterEach(() => {
     display: flex;
     flex-direction: column;
     // justify-content: center;
-    z-index: 2;
+
 }
 
 .mask {
@@ -50,7 +53,7 @@ router.afterEach(() => {
     width: 100%;
     height: 100%;
     background-color: #0009;
-    z-index: 1;
+
     display: none;
 }
 
@@ -59,10 +62,12 @@ router.afterEach(() => {
         position: fixed;
         left: 0;
         top: 50px;
+        z-index: 2;
     }
 
     .mask {
         display: inline-block;
+        z-index: 1;
     }
 }
 </style>

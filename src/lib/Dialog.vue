@@ -1,20 +1,23 @@
 <template>
     <template v-if="visible">
-        <div class="chair-dialog-overlay" @click="() => { if (props.closeOnClickOverlay) { onCloseDialog() } }"></div>
-        <div class="chair-dialog-wrapper">
-            <div class="chair-dialog">
-                <header>
-                    <slot name="title"></slot>
-                    <div class="chair-dialog-close" @click="onCloseDialog">x</div>
-                </header>
-                <main>
-                    <slot name="default"></slot>
-                </main>
-                <footer>
-                    <slot name="footer"></slot>
-                </footer>
+        <Teleport to="body">
+            <div class="chair-dialog-overlay" @click="() => { if (props.closeOnClickOverlay) { onCloseDialog() } }">
             </div>
-        </div>
+            <div class="chair-dialog-wrapper">
+                <div class="chair-dialog">
+                    <header>
+                        <slot name="title"></slot>
+                        <div class="chair-dialog-close" @click="onCloseDialog">x</div>
+                    </header>
+                    <main>
+                        <slot></slot>
+                    </main>
+                    <footer>
+                        <slot name="footer"></slot>
+                    </footer>
+                </div>
+            </div>
+        </Teleport>
     </template>
 </template>
 <script setup lang='ts'>
@@ -43,13 +46,13 @@ const onCloseDialog = () => {
 </script>
 <style lang='scss' scoped>
 .chair-dialog-overlay {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 100;
+    z-index: 998;
 }
 
 .chair-dialog-wrapper {
@@ -57,7 +60,7 @@ const onCloseDialog = () => {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    z-index: 100;
+    z-index: 999;
 
     .chair-dialog {
         background-color: #fff;
