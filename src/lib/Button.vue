@@ -53,27 +53,34 @@ const props = withDefaults(defineProps<{
 $bw: 80px;
 $bh: 30px;
 $radius: 4px;
+$hpadding: 4px;
+$wpadding: 6px;
 
 .chair-button-container {
     display: block;
 
     &[size="small"] {
         .chair-button {
-            width: calc($bw - 20px);
-            height: calc($bh - 5px);
+            // width: calc($bw - 20px);
+            // height: calc($bh - 5px);
+            min-width: calc($bw - 20px);
+            padding: calc($hpadding - 1px) calc($wpadding - 1px);
         }
     }
 
     &[size="large"] {
         .chair-button {
-            width: calc($bw + 20px);
-            height: calc($bh + 5px);
+            // width: calc($bw + 20px);
+            // height: calc($bh + 5px);
+            min-width: calc($bw + 20px);
+            padding: calc($hpadding + 1px) calc($wpadding + 1px);
         }
     }
 
     .chair-button {
-        width: $bw;
-        height: $bh;
+        min-width: $bw;
+        padding: $hpadding $wpadding;
+        // height: $bh;
         border: 1px solid gray;
         background: #fff;
         white-space: nowrap;
