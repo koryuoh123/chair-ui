@@ -3,6 +3,7 @@
         <RouterLink to="/doc/button">button</RouterLink>
         <RouterLink to="/doc/switch">switch</RouterLink>
         <RouterLink to="/doc/dialog">dialog</RouterLink>
+        <RouterLink to="/doc/tabs">tabs</RouterLink>
         <div>1</div>
         <div>1</div>
         <div>1</div>

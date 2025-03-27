@@ -44,7 +44,7 @@ const onCloseDialog = () => {
 
 
 </script>
-<style lang='scss' scoped>
+<style lang='scss'>
 .chair-dialog-overlay {
     position: absolute;
     top: 0;

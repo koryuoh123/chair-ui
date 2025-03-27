@@ -19,6 +19,7 @@ const router = createRouter({
         { path: 'button', component: () => import('@/components/ButtonDemo.vue') },
         { path: 'switch', component: () => import('@/components/SwitchDemo.vue') },
         { path: 'dialog', component: () => import('@/components/DialogDemo.vue') },
+        { path: 'tabs', component: () => import('@/components/TabsDemo.vue') },
         { path: '', component: () => import('@/views/doc/Button.vue') },
       ],
     },
