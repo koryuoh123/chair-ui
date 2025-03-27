@@ -1,11 +1,11 @@
 <template>
     <template v-if="visible">
-        <div class="chair-dialog-overlay" @click="close"></div>
+        <div class="chair-dialog-overlay" @click="() => { if (props.closeOnClickOverlay) { onCloseDialog() } }"></div>
         <div class="chair-dialog-wrapper">
             <div class="chair-dialog">
                 <header>
                     <slot name="title"></slot>
-                    <div class="chair-dialog-close" @click="close">x</div>
+                    <div class="chair-dialog-close" @click="onCloseDialog">x</div>
                 </header>
                 <main>
                     <slot name="default"></slot>
@@ -18,15 +18,28 @@
     </template>
 </template>
 <script setup lang='ts'>
-import { ref } from 'vue';
-defineOptions({
-    inheritAttrs: false
+import { ref, watch } from 'vue';
+
+
+const props = withDefaults(defineProps<{
+    closeOnClickOverlay?: boolean;// 是否在点击遮罩层时关闭对话框
+    beforeClose?: () => void;// 用户想要自己控制关闭的时机
+}>(), {
+    closeOnClickOverlay: true
 })
 
+// 基础功能，显示关闭
 const visible = defineModel<boolean>({ required: true, default: false })
-const close = () => {
-    visible.value = false
+
+const onCloseDialog = () => {
+    // 如果用户想要自己控制关闭的时机，则调用用户的方法
+    if (props.beforeClose?.()) { /*无后续*/ }
+    else {
+        visible.value = false
+    }
 }
+
+
 </script>
 <style lang='scss' scoped>
 .chair-dialog-overlay {

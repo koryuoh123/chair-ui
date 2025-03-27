@@ -4,7 +4,7 @@
         <div><button @click="visible = !visible">toogle</button></div>
 
     </div>
-    <Dialog v-model="visible">
+    <Dialog v-model="visible" :before-close="beforeClose">
         <template #title>
             <h1>标题</h1>
         </template>
@@ -21,6 +21,12 @@ import Button from '@/lib/Button.vue';
 import { ref } from 'vue';
 
 const visible = ref(false)
+
+const beforeClose = () => {
+    console.log('beforeClose')
+    visible.value = false
+}
+
 </script>
 <style lang='scss' scoped>
 .demo-wrapper {
