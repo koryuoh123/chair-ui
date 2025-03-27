@@ -1,23 +1,25 @@
 <template>
-    <h2>大小</h2>
-    <div class="demolist">
-        <Button @click="clickEvent" @focus="focusEvent" size="small">你好</Button>
-        <Button @click="clickEvent" @focus="focusEvent">你好</Button>
-        <Button @click="clickEvent" @focus="focusEvent" size="large">你好</Button>
-    </div>
-    <h2>主题</h2>
-    <div class="demolist">
-        <Button @click="clickEvent" @focus="focusEvent">你好</Button>
-        <Button @click="clickEvent" @focus="focusEvent" theme="primary">你好</Button>
-        <Button @click="clickEvent" @focus="focusEvent" theme="danger">你好</Button>
-    </div>
-    <h2>禁用</h2>
-    <div class="demolist">
-        <Button @click="clickEvent" @focus="focusEvent" disabled>你好</Button>
-    </div>
-    <h2>loading</h2>
-    <div class="demolist">
-        <Button @click="clickEvent" @focus="focusEvent" loading>你好</Button>
+    <div class="demo-wrapper">
+        <h2>大小</h2>
+        <div class="demolist">
+            <Button @click="clickEvent" @focus="focusEvent" size="small">你好</Button>
+            <Button @click="clickEvent" @focus="focusEvent">你好</Button>
+            <Button @click="clickEvent" @focus="focusEvent" size="large">你好</Button>
+        </div>
+        <h2>主题</h2>
+        <div class="demolist">
+            <Button @click="clickEvent" @focus="focusEvent">你好</Button>
+            <Button @click="clickEvent" @focus="focusEvent" theme="primary">你好</Button>
+            <Button @click="clickEvent" @focus="focusEvent" theme="danger">你好</Button>
+        </div>
+        <h2>禁用</h2>
+        <div class="demolist">
+            <Button @click="clickEvent" @focus="focusEvent" disabled>你好</Button>
+        </div>
+        <h2>loading</h2>
+        <div class="demolist">
+            <Button @click="clickEvent" @focus="focusEvent" loading>你好</Button>
+        </div>
     </div>
 </template>
 
@@ -42,5 +44,10 @@ const focusEvent = () => {
 .demolist {
     display: flex;
     justify-content: space-around;
+}
+
+.demo-wrapper {
+    width: 100%;
+    border: 1px dashed red;
 }
 </style>

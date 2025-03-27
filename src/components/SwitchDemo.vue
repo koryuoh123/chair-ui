@@ -1,5 +1,7 @@
 <template>
-    <Switch v-model="checked" />
+    <div class="demo-wrapper">
+        <Switch v-model="checked" />
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -10,4 +12,9 @@ const checked = ref(false)
 
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.demo-wrapper {
+    width: 100%;
+    border: 1px dashed red;
+}
+</style>

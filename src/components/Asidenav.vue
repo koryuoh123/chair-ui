@@ -2,6 +2,7 @@
     <div class="asidenav">
         <RouterLink to="/doc/button">button</RouterLink>
         <RouterLink to="/doc/switch">switch</RouterLink>
+        <RouterLink to="/doc/dialog">dialog</RouterLink>
         <div>1</div>
         <div>1</div>
         <div>1</div>
@@ -34,7 +35,7 @@ router.afterEach(() => {
 .asidenav {
     width: 200px;
     height: 100%;
-    background-color: #fff;
+    background-color: #efefef;
     color: white;
     display: flex;
     flex-direction: column;

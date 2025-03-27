@@ -3,7 +3,7 @@
         <Topnav class="topnav" />
         <div class="content">
             <Asidenav v-if="asideVisible" />
-            <RouterView style="width:100%" />
+            <RouterView />
         </div>
     </div>
 
