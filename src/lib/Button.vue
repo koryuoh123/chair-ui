@@ -1,6 +1,6 @@
 <template>
     <div class="btncontainer" :size="size">
-        <button v-bind="rest" class="chair-button" :class="{ [`theme-${props.theme}`]: props.theme }">
+        <button v-bind="rest" class="chair-button" :class="{ [`chair-theme-${props.theme}`]: props.theme }">
             <slot></slot>
         </button>
     </div>
@@ -84,13 +84,13 @@ $radius: 4px;
             border: 0;
         }
 
-        &.theme-primary {
+        &.chair-theme-primary {
             // background-color: blue;
             color: var(--color-text-primary);
             border-color: var(--color-text-primary);
         }
 
-        &.theme-danger {
+        &.chair-theme-danger {
             // background-color: red;
             color: var(--color-text-danger);
             border-color: var(--color-text-danger);

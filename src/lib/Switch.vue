@@ -1,5 +1,5 @@
 <template>
-    <button :class="{ checked }" @click="toggle"><span></span></button>
+    <button class="chair-switch" :class="{ checked }" @click="toggle"><span></span></button>
 </template>
 
 <script setup lang="ts">
@@ -19,7 +19,7 @@ const toggle = () => {
 $h: 22px;
 $h2: $h - 4px;
 
-button {
+.chair-switch {
     height: $h;
     width: $h * 2;
     border: none;
@@ -41,7 +41,7 @@ button {
     }
 }
 
-button.checked {
+.chair-switch.checked {
     background-color: #409EFF;
 
     >span {
@@ -49,12 +49,12 @@ button.checked {
     }
 }
 
-button:focus {
+.chair-switch:focus {
     outline: none;
 }
 
 // 鼠标按住变胖的动画
-button.checked:active {
+.chair-switch.checked:active {
     >span {
         width: $h2 + 4px;
         margin-left: -4px;
