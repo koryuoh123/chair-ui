@@ -1,9 +1,35 @@
 <template>
     <div class="topnav">
         <SvgIcon iconName="aside-icon" class="aside" @click="toggleAsideVisible"></SvgIcon>
-        <div class="logo">logo</div>
+        <div class="logo">
+            <img src="@/assets/imgs/logo2.png" alt="logo" />
+            <div class="text">chair</div>
+        </div>
         <div class="menu">
-            <RouterLink to="/" class="btn">返回</RouterLink>
+            <Menu :background="false">
+                <MenuItem>
+                <RouterLink to="/">Home</RouterLink>
+                </MenuItem>
+                <SubMenu>
+                    <template #title>Components</template>
+                    <MenuItem>
+                    <RouterLink to="/components/button">Button</RouterLink>
+                    </MenuItem>
+                    <MenuItem>
+                    <RouterLink to="/components/switch">Switch</RouterLink>
+                    </MenuItem>
+                    <MenuItem>
+                    <RouterLink to="/components/dialog">Dialog</RouterLink>
+                    </MenuItem>
+                    <MenuItem>
+                    <RouterLink to="/components/tabs">Tabs</RouterLink>
+                    </MenuItem>
+                    <MenuItem>
+                    <RouterLink to="/components/menu">Menu</RouterLink>
+                    </MenuItem>
+                </SubMenu>
+                <MenuItem>Resources</MenuItem>
+            </Menu>
         </div>
 
     </div>
@@ -12,6 +38,12 @@
 <script setup lang="ts">
 import type { Ref } from 'vue'
 import { ref, inject } from 'vue'
+
+import SvgIcon from '@/components/SvgIcon.vue'
+import Menu from '@/lib/Menu.vue'
+import SubMenu from '@/lib/SubMenu.vue'
+import MenuItem from '@/lib/MenuItem.vue'
+
 const asideVisible = inject<Ref<boolean>>('asideVisible', ref(false))
 const toggleAsideVisible = () => {
     asideVisible.value = !asideVisible.value
@@ -24,15 +56,40 @@ const toggleAsideVisible = () => {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #333;
+
     color: $basic-color;
     width: 100%;
-    height: 50px;
+    height: 60px;
 
+    background: #141124;
+    background: linear-gradient(90deg, rgba(21, 18, 37, 1) 0%, rgba(32, 28, 52, 0.969625350140056) 50%, rgba(21, 18, 37, 1) 100%);
+
+    border-bottom: 1px solid #2B283E;
 
     >.logo {
         margin-right: auto;
         padding: 1em;
+        height: 70px;
+        width: auto;
+        display: flex;
+        align-items: center;
+        gap: 0.2em;
+
+        >img {
+            height: 100%;
+        }
+
+        .text {
+            font-style: italic;
+            font-size: 16px;
+            color: #f7f6fbd5;
+            font-weight: bold;
+
+            //         background-clip: text;
+            //   -webkit-background-clip: text;
+            //   color: transparent;
+            //   background-image: linear-gradient(180deg, #FFFFFF 45%, #4C81E7 100%)
+        }
     }
 
     >.aside {
@@ -45,11 +102,8 @@ const toggleAsideVisible = () => {
     }
 
     >.menu {
-        display: flex;
-        padding-right: 1em;
-
-        .btn {
-            color: $basic-color;
+        a {
+            width: 100%;
         }
     }
 

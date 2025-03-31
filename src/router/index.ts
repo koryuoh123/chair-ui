@@ -12,15 +12,16 @@ const router = createRouter({
       component: Home,
     },
     {
-      path: '/doc',
-      name: 'doc',
+      path: '/components',
+      name: 'components',
       component: Basiclayout,
       children: [
         { path: 'button', component: () => import('@/components/ButtonDemo.vue') },
         { path: 'switch', component: () => import('@/components/SwitchDemo.vue') },
         { path: 'dialog', component: () => import('@/components/DialogDemo.vue') },
         { path: 'tabs', component: () => import('@/components/TabsDemo.vue') },
-        { path: '', component: () => import('@/views/doc/Button.vue') },
+        { path: 'menu', component: () => import('@/components/MenuDemo.vue') },
+        { path: '', component: () => import('@/components/ButtonDemo.vue') },
       ],
     },
     /**

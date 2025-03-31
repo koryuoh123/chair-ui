@@ -70,7 +70,7 @@ watchEffect(() => {
     if (props.type === 'default') {
         // width是元素宽度。left是距离视口的距离
         const { width, left } = currentTabRef.value?.getBoundingClientRect?.() || { width: 0, left: 0 }
-
+        // watchEffect在挂载之前就会运行
         if (sliderRef.value) {
             const { left: left2 } = sliderWrapperRef.value?.getBoundingClientRect?.() || { width: 0, left: 0 }
             const increment = 0; // 下划线的增量

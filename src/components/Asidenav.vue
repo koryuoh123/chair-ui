@@ -1,16 +1,12 @@
 <template>
     <div class="asidenav">
-        <RouterLink to="/doc/button">button</RouterLink>
-        <RouterLink to="/doc/switch">switch</RouterLink>
-        <RouterLink to="/doc/dialog">dialog</RouterLink>
-        <RouterLink to="/doc/tabs">tabs</RouterLink>
-        <div>1</div>
-        <div>1</div>
-        <div>1</div>
-        <div>1</div>
-        <div>1</div>
-        <div>1</div>
-        <div>1</div>
+        <RouterLink to="/components/button">button</RouterLink>
+        <RouterLink to="/components/switch">switch</RouterLink>
+        <RouterLink to="/components/dialog">dialog</RouterLink>
+        <RouterLink to="/components/tabs">tabs</RouterLink>
+        <RouterLink to="/components/menu">menu</RouterLink>
+
+
     </div>
     <div class="mask" v-if="asideVisible" @click="toggleAsideVisible"></div>
 </template>

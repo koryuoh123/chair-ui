@@ -12,7 +12,7 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 export default defineConfig({
   plugins: [
     vue(),
-    vueDevTools(),
+    // vueDevTools(),
     createSvgIconsPlugin({
       iconDirs: [path.resolve(process.cwd(), 'src/assets/svgs')], // SVG存放路径
       symbolId: 'icon-[dir]-[name]', // ID命名规则

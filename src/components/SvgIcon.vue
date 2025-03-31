@@ -4,7 +4,9 @@
     </svg>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { ref } from 'vue';
+
 defineProps({
     iconName: { type: String, required: true },  // 图标名称
     svgClass: { type: String, default: 'icon' }   // 自定义样式类
@@ -13,8 +15,7 @@ defineProps({
 </script>
 <style lang="scss" scoped>
 .icon {
-    height: 24px;
-    width: 24px;
+    font-size: inherit;
     fill: currentColor;
 }
 </style>
