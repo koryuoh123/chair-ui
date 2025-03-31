@@ -149,6 +149,7 @@ const onMouseOutSubMenu = () => {
     color: var(--color-menu-text);
     overflow: hidden;
     font-size: inherit;
+    z-index: 100;
 
     .chair-sub-menu-title {
         color: inherit;

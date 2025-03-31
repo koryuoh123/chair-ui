@@ -2,7 +2,7 @@
     <div class="demo-wrapper">
         <h2>大小</h2>
         <div class="demolist">
-            <Button2 @click="clickEvent" @focus="focusEvent" size="small">你好12312313</Button2>
+            <Button @click="clickEvent" @focus="focusEvent" size="small">你好12312313</Button>
             <Button @click="clickEvent" @focus="focusEvent">你好</Button>
             <Button @click="clickEvent" @focus="focusEvent" size="large">你好</Button>
         </div>
@@ -25,7 +25,6 @@
 
 <script setup lang="ts">
 import Button from '@/lib/Button.vue';
-import Button2 from '@/lib/Button2.vue';
 import { ref } from 'vue';
 /**
  * click

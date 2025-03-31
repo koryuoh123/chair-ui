@@ -1,14 +1,17 @@
 <template>
     <div class="topnav">
         <SvgIcon iconName="aside-icon" class="aside" @click="toggleAsideVisible"></SvgIcon>
-        <div class="logo">
+        <div class="logo" v-if="!isHome">
             <img src="@/assets/imgs/logo2.png" alt="logo" />
             <div class="text">chair</div>
         </div>
         <div class="menu">
             <Menu :background="false">
-                <MenuItem>
+                <MenuItem v-if="!isHome">
                 <RouterLink to="/">Home</RouterLink>
+                </MenuItem>
+                <MenuItem>
+                Guide
                 </MenuItem>
                 <SubMenu>
                     <template #title>Components</template>
@@ -37,7 +40,7 @@
 
 <script setup lang="ts">
 import type { Ref } from 'vue'
-import { ref, inject } from 'vue'
+import { ref, inject, computed } from 'vue'
 
 import SvgIcon from '@/components/SvgIcon.vue'
 import Menu from '@/lib/Menu.vue'
@@ -48,6 +51,12 @@ const asideVisible = inject<Ref<boolean>>('asideVisible', ref(false))
 const toggleAsideVisible = () => {
     asideVisible.value = !asideVisible.value
 }
+
+import { useRoute } from 'vue-router'
+
+const route = useRoute();
+const isHome = computed(() => route.path === '/')
+
 </script>
 
 <style scoped lang="scss">
@@ -56,6 +65,7 @@ const toggleAsideVisible = () => {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 
     color: $basic-color;
     width: 100%;
@@ -67,7 +77,8 @@ const toggleAsideVisible = () => {
     border-bottom: 1px solid #2B283E;
 
     >.logo {
-        margin-right: auto;
+        position: absolute;
+        left: 4em;
         padding: 1em;
         height: 70px;
         width: auto;
@@ -102,6 +113,10 @@ const toggleAsideVisible = () => {
     }
 
     >.menu {
+        // position: absolute;
+        // left: 35%;
+        margin-left: auto;
+
         a {
             width: 100%;
         }
