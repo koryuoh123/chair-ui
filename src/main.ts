@@ -1,6 +1,6 @@
 import './lib/index.scss'
 import './assets/main.css'
-import 'github-markdown-css'
+import 'github-markdown-css/github-markdown-dark.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -10,6 +10,7 @@ import router from './router'
 
 import 'virtual:svg-icons-register' // 自动注册所有SVG图标
 import SvgIcon from '@/components/SvgIcon.vue'
+
 const app = createApp(App)
 
 app.use(createPinia())

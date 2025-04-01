@@ -1,34 +1,61 @@
 <template>
     <div class="markdown-body demo-wrapper ">
-        <h2>大小</h2>
-        <div class="demolist">
-            <Button @click="clickEvent" @focus="focusEvent" size="small">Button</Button>
-            <Button @click="clickEvent" @focus="focusEvent">Button</Button>
-            <Button @click="clickEvent" @focus="focusEvent" size="large">Button</Button>
+
+        <div>
+            <Markdown>{{ `# 按钮\n<p>常用的操作按钮</p>` }}
+            </Markdown>
+            <Markdown>{{ `## 大小\n<p>使用
+                    <code>size</code>来定义按钮大小。
+                </p>` }}
+            </Markdown>
+
+            <div class="demolist">
+                <Button @click="clickEvent" @focus="focusEvent" size="small">Button</Button>
+                <Button @click="clickEvent" @focus="focusEvent">Button</Button>
+                <Button @click="clickEvent" @focus="focusEvent" size="large">Button</Button>
+            </div>
         </div>
-        <h2>主题</h2>
-        <div class="demolist">
-            <Button @click="clickEvent" @focus="focusEvent" theme="primary">Button</Button>
-            <Button @click="clickEvent" @focus="focusEvent" theme="success">Button</Button>
-            <Button @click="clickEvent" @focus="focusEvent" theme="warning">Button</Button>
-            <Button @click="clickEvent" @focus="focusEvent" theme="danger">Button</Button>
-            <Button @click="clickEvent" @focus="focusEvent" theme="info">Button</Button>
-            <Button @click="clickEvent" @focus="focusEvent" theme="info" color="red">Button</Button>
+
+        <div>
+            <Markdown>{{ `## 主题\n<p>使用
+                    <code>theme</code>来定义按钮样式。
+                </p>` }}
+            </Markdown>
+
+            <div class="demolist">
+                <Button @click="clickEvent" @focus="focusEvent" theme="primary">Button</Button>
+                <Button @click="clickEvent" @focus="focusEvent" theme="success">Button</Button>
+                <Button @click="clickEvent" @focus="focusEvent" theme="warning">Button</Button>
+                <Button @click="clickEvent" @focus="focusEvent" theme="danger">Button</Button>
+                <Button @click="clickEvent" @focus="focusEvent" theme="info">Button</Button>
+                <Button @click="clickEvent" @focus="focusEvent" theme="info" color="red">Button</Button>
+            </div>
         </div>
-        <h2>禁用</h2>
-        <div class="demolist">
-            <Button @click="clickEvent" @focus="focusEvent" disabled>Button</Button>
-            <Button @click="clickEvent" @focus="focusEvent" disabled theme="success">Button</Button>
-            <Button @click="clickEvent" @focus="focusEvent" disabled theme="warning">Button</Button>
-            <Button @click="clickEvent" @focus="focusEvent" disabled theme="danger">Button</Button>
+
+        <div>
+            <Markdown>{{ `## 主题\n<p>使用
+                    <code>disabed</code>来定义按钮是否被禁用。
+                </p>` }}
+            </Markdown>
+            <div class="demolist">
+                <Button @click="clickEvent" @focus="focusEvent" disabled>Button</Button>
+                <Button @click="clickEvent" @focus="focusEvent" disabled theme="success">Button</Button>
+                <Button @click="clickEvent" @focus="focusEvent" disabled theme="warning">Button</Button>
+                <Button @click="clickEvent" @focus="focusEvent" disabled theme="danger">Button</Button>
+            </div>
         </div>
-        <h2>加载中</h2>
-        <div class="demolist">
-            <Button @click="clickEvent" @focus="focusEvent" theme="primary" loading>Button</Button>
-            <Button @click="clickEvent" @focus="focusEvent" theme="success" loading>Button</Button>
-            <Button @click="clickEvent" @focus="focusEvent" theme="warning" loading>Button</Button>
-            <Button @click="clickEvent" @focus="focusEvent" theme="danger" loading>Button</Button>
-            <Button @click="clickEvent" @focus="focusEvent" theme="info" loading>Button</Button>
+        <div>
+            <Markdown>{{ `## 加载中\n<p>使用
+                    <code>loading</code>来定义按钮是否正在加载。
+                </p>` }}
+            </Markdown>
+            <div class="demolist">
+                <Button @click="clickEvent" @focus="focusEvent" theme="primary" loading>Button</Button>
+                <Button @click="clickEvent" @focus="focusEvent" theme="success" loading>Button</Button>
+                <Button @click="clickEvent" @focus="focusEvent" theme="warning" loading>Button</Button>
+                <Button @click="clickEvent" @focus="focusEvent" theme="danger" loading>Button</Button>
+                <Button @click="clickEvent" @focus="focusEvent" theme="info" loading>Button</Button>
+            </div>
         </div>
     </div>
 </template>
@@ -36,6 +63,7 @@
 <script setup lang="ts">
 import Button from '@/lib/Button.vue';
 import { ref } from 'vue';
+import Markdown from '@/components/Markdown.vue';
 /**
  * click
  * focus
@@ -51,14 +79,6 @@ const focusEvent = () => {
 </script>
 
 <style scoped lang="scss">
-.demolist {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    // justify-content: space-around;
-    padding-left: 1em;
-}
-
 ::-webkit-scrollbar {
     width: 6px;
 }
@@ -72,16 +92,34 @@ const focusEvent = () => {
 .demo-wrapper {
     width: 100%;
     height: 100%;
-    margin: 30px 12px 12px 12px;
+    padding: 0px 24px 12px 36px;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    color: var(--color-text-light-1);
 
-
-
-    h2 {
-        color: var(--color-text-light-1);
-        margin-bottom: 1em;
-        text-indent: 1em;
-
+    .demolist {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        // padding-left: 1em;
+        padding-top: 12px;
     }
+
+    :deep() {
+
+        h1,
+        h2 {
+
+            color: var(--color-text-light-1);
+            // text-indent: 1em;
+        }
+
+        p {
+            font-size: 16px;
+        }
+    }
+
 }
 </style>
