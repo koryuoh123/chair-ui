@@ -2,23 +2,33 @@
     <div class="demo-wrapper">
         <h2>大小</h2>
         <div class="demolist">
-            <Button @click="clickEvent" @focus="focusEvent" size="small">你好12312313</Button>
-            <Button @click="clickEvent" @focus="focusEvent">你好</Button>
-            <Button @click="clickEvent" @focus="focusEvent" size="large">你好</Button>
+            <Button @click="clickEvent" @focus="focusEvent" size="small">Button</Button>
+            <Button @click="clickEvent" @focus="focusEvent">Button</Button>
+            <Button @click="clickEvent" @focus="focusEvent" size="large">Button</Button>
         </div>
         <h2>主题</h2>
         <div class="demolist">
-            <Button @click="clickEvent" @focus="focusEvent">你好</Button>
-            <Button @click="clickEvent" @focus="focusEvent" theme="primary">你好</Button>
-            <Button @click="clickEvent" @focus="focusEvent" theme="danger">你好</Button>
+            <Button @click="clickEvent" @focus="focusEvent" theme="primary">Button</Button>
+            <Button @click="clickEvent" @focus="focusEvent" theme="success">Button</Button>
+            <Button @click="clickEvent" @focus="focusEvent" theme="warning">Button</Button>
+            <Button @click="clickEvent" @focus="focusEvent" theme="danger">Button</Button>
+            <Button @click="clickEvent" @focus="focusEvent" theme="info">Button</Button>
+            <Button @click="clickEvent" @focus="focusEvent" theme="info" color="red">Button</Button>
         </div>
         <h2>禁用</h2>
         <div class="demolist">
-            <Button @click="clickEvent" @focus="focusEvent" disabled>你好</Button>
+            <Button @click="clickEvent" @focus="focusEvent" disabled>Button</Button>
+            <Button @click="clickEvent" @focus="focusEvent" disabled theme="success">Button</Button>
+            <Button @click="clickEvent" @focus="focusEvent" disabled theme="warning">Button</Button>
+            <Button @click="clickEvent" @focus="focusEvent" disabled theme="danger">Button</Button>
         </div>
-        <h2>loading</h2>
+        <h2>加载中</h2>
         <div class="demolist">
-            <Button @click="clickEvent" @focus="focusEvent" loading>你好</Button>
+            <Button @click="clickEvent" @focus="focusEvent" theme="primary" loading>Button</Button>
+            <Button @click="clickEvent" @focus="focusEvent" theme="success" loading>Button</Button>
+            <Button @click="clickEvent" @focus="focusEvent" theme="warning" loading>Button</Button>
+            <Button @click="clickEvent" @focus="focusEvent" theme="danger" loading>Button</Button>
+            <Button @click="clickEvent" @focus="focusEvent" theme="info" loading>Button</Button>
         </div>
     </div>
 </template>
@@ -33,21 +43,39 @@ import { ref } from 'vue';
  * size 大小
  */
 const clickEvent = () => {
-    console.log('click');
+
 }
 const focusEvent = () => {
-    console.log('focus');
+
 }
 </script>
 
 <style scoped lang="scss">
 .demolist {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    // justify-content: space-around;
+    padding-left: 1em;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 .demo-wrapper {
     width: 100%;
-    border: 1px dashed red;
+    height: 100%;
+    margin: 30px 12px 12px 12px;
+    overflow: auto;
+
+
+
+    h2 {
+        color: var(--color-text-light-1);
+        margin-bottom: 1em;
+        text-indent: 1em;
+        font-size: 1.5rem;
+    }
 }
 </style>

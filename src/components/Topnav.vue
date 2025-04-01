@@ -5,7 +5,7 @@
             <img src="@/assets/imgs/logo2.png" alt="logo" />
             <div class="text">chair</div>
         </div>
-        <div class="menu">
+        <div class="menu" :style="{ marginRight: isHome ? 'auto' : 'unset' }">
             <Menu :background="false">
                 <MenuItem v-if="!isHome">
                 <RouterLink to="/">Home</RouterLink>

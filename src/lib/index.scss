@@ -47,11 +47,12 @@
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
 
-  --chair-primary-color: #409eff;
+  --chair-primary-color: #9384e5;
   --chair-success-color: #67c23a;
-  --chair-danger-color: #f56c6c;
-  --chair-warning-color: #e6a23c;
-  --chair-info-color: #909399;
+  --chair-danger-color: red;
+  --chair-warning-color: orange;
+  --chair-info-color: yellow;
+  // --chair-info-color: #909399;
   --chair-border-color: #dcdfe6;
   --color-text-light-1: #a29eb4;
 }
@@ -72,7 +73,6 @@
 
   --color-text-primary: var(--chair-primary-color);
   --color-text-danger: var(--chair-danger-color);
-
   --color-menu-text: var(--color-text-light-1);
   --color-bg-dark: #181627;
 }

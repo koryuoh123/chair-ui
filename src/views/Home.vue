@@ -14,11 +14,11 @@
                 </div>
                 <div class="project-description">Simple and easy to use</div>
                 <div class="project-description">A Vue 3 based component library</div>
-                <div class="start-button">
-                    <span class="chair-button-decoration-border"></span>
+                <Button class="start-button" size="large">
+                    <!-- <span class="chair-button-decoration-border"></span> -->
                     <RouterLink to="/components">GET STARTED
                     </RouterLink>
-                </div>
+                </Button>
             </div>
             <div class="technology-wrapper">
                 <div class="grid-wrapper">
@@ -46,6 +46,31 @@ import Topnav from '@/components/Topnav.vue'
 import Asidenav from '@/components/Asidenav.vue'
 import { RouterLink, RouterView } from 'vue-router'
 import SvgIcon from '@/components/SvgIcon.vue'
+import Button from '@/lib/Button.vue'
+import { onMounted, onUnmounted } from 'vue'
+
+// 如果视口小于1024px，则设置html的font-size为100vw/1024*16
+const handleResize = () => {
+    const width = document.documentElement.clientWidth
+    if (width < 1000) {
+        if (width < 600) {
+            document.documentElement.style.fontSize = `${width / 1024 * 16}px`
+        } else {
+            document.documentElement.style.fontSize = `${width / 1024 * 16}px`
+        }
+    } else {
+        document.documentElement.style.fontSize = '16px'
+    }
+}
+
+onMounted(() => {
+    handleResize()
+    window.addEventListener('resize', handleResize)
+})
+
+onUnmounted(() => {
+    window.removeEventListener('resize', handleResize)
+})
 </script>
 
 <style scoped lang="scss">
@@ -77,7 +102,7 @@ import SvgIcon from '@/components/SvgIcon.vue'
             top: 10px;
             left: 10%;
             width: 80%;
-            height: 300px;
+            height: 30%;
             background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.1) 1px, transparent 0);
             background-size: 40px 40px;
             pointer-events: none;
@@ -140,82 +165,14 @@ import SvgIcon from '@/components/SvgIcon.vue'
                 margin-bottom: 2rem;
             }
 
-            .start-button {
-                background-color: #030014;
+            :deep(.start-button) {
+                background: #030014;
                 margin-top: 10vh;
 
-                position: relative;
-                display: flex;
-
-
-                &:hover {
-
-                    .chair-button-decoration-border:before,
-                    .chair-button-decoration-border:after,
-                    &:before,
-                    &:after {
-                        width: calc(95% / 2);
-                        height: calc(90% / 2);
-                        background-color: #fff;
-
-                        box-shadow: 0 0 5px #9384E5, 0 0 5px #9384E5, inset 0 0 5px #9384E5, inset 0 0 5px #9384E5;
-                    }
-
-                    a {
-                        color: #cfc9f1;
-                        text-shadow: 0 0 10px #9384E5, 0 0 20px #9384E5, 0 0 80px #9384E5, 0 0 60px #9384E5;
-
-                    }
-                }
-
-                &:before,
-                &:after,
-                .chair-button-decoration-border:before,
-                .chair-button-decoration-border:after {
-                    content: '';
-                    display: inline-block;
-                    position: absolute;
-                    width: 10px;
-                    height: 10px;
-                    background-color: #9384E5;
-                    transition: .5s;
-                    z-index: 1;
-                }
-
-                .chair-button-decoration-border:before {
-                    top: -2px;
-                    left: -2px;
-                }
-
-                .chair-button-decoration-border:after {
-                    top: -2px;
-                    right: -2px;
-                }
-
-                &:before {
-                    bottom: -2px;
-                    left: -2px;
-                }
-
-                &:after {
-                    bottom: -2px;
-                    right: -2px;
-                }
-
                 a {
-
-                    padding: 4px 30px;
-                    // border-radius: 5px;
-                    background-color: inherit;
-                    text-decoration: none;
-                    z-index: 2;
-                    color: #9384E5;
-
-                    letter-spacing: 0.1em;
                     font-size: 2rem;
-                    font-weight: 500;
-                    font-family: 'titleBlack';
                 }
+
             }
         }
 

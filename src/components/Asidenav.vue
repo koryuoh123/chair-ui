@@ -5,8 +5,6 @@
         <RouterLink to="/components/dialog">dialog</RouterLink>
         <RouterLink to="/components/tabs">tabs</RouterLink>
         <RouterLink to="/components/menu">menu</RouterLink>
-
-
     </div>
     <div class="mask" v-if="asideVisible" @click="toggleAsideVisible"></div>
 </template>
@@ -35,12 +33,19 @@ router.afterEach(() => {
 .asidenav {
     width: 200px;
     height: 100%;
-    background-color: #efefef;
-    color: white;
+
+    color: var(--color-text-light-1);
     display: flex;
     flex-direction: column;
     // justify-content: center;
+    background-color: #181627;
+    border-right: 1px solid #2B283E;
 
+    a {
+        color: inherit;
+        text-decoration: none;
+        font-size: 20px;
+    }
 }
 
 .mask {
@@ -59,12 +64,12 @@ router.afterEach(() => {
         position: fixed;
         left: 0;
         top: 50px;
-        z-index: 2;
+        z-index: 999;
     }
 
     .mask {
         display: inline-block;
-        z-index: 1;
+        z-index: 998;
     }
 }
 </style>

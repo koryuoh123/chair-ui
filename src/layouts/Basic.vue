@@ -34,6 +34,7 @@ onMounted(() => {
     display: flex;
     flex-direction: column;
     // position: relative;
+    height: 100%;
 
     >.topnav {
         z-index: 500;
@@ -44,6 +45,13 @@ onMounted(() => {
         display: flex;
         // height: calc(100% - 50px);
         z-index: 400;
+
+        // background: linear-gradient(180deg, rgba(27, 23, 45, 0.98) 0%, rgba(3, 0, 20, 1) 20%);
+        background: #181627;
+        height: 0;
+        flex-grow: 1;
+        ;
+        overflow: hidden;
     }
 }
 </style>
