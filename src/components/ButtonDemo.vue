@@ -5,7 +5,7 @@
             <Markdown>{{ `# 按钮\n<p>常用的操作按钮</p>` }}
             </Markdown>
             <Markdown>{{ `## 大小\n<p>使用
-                    <code>size</code>来定义按钮大小。
+                    <code>size</code> 来定义按钮大小。
                 </p>` }}
             </Markdown>
 
@@ -18,7 +18,7 @@
 
         <div>
             <Markdown>{{ `## 主题\n<p>使用
-                    <code>theme</code>来定义按钮样式。
+                    <code>theme</code> 来定义按钮样式。也可以通过 <code>color</code> 来自定义按钮颜色。
                 </p>` }}
             </Markdown>
 
@@ -28,13 +28,13 @@
                 <Button @click="clickEvent" @focus="focusEvent" theme="warning">Button</Button>
                 <Button @click="clickEvent" @focus="focusEvent" theme="danger">Button</Button>
                 <Button @click="clickEvent" @focus="focusEvent" theme="info">Button</Button>
-                <Button @click="clickEvent" @focus="focusEvent" theme="info" color="red">Button</Button>
+                <Button @click="clickEvent" @focus="focusEvent" color="purple">Button</Button>
             </div>
         </div>
 
         <div>
             <Markdown>{{ `## 主题\n<p>使用
-                    <code>disabed</code>来定义按钮是否被禁用。
+                    <code>disabed</code> 来定义按钮是否被禁用。
                 </p>` }}
             </Markdown>
             <div class="demolist">
@@ -46,7 +46,7 @@
         </div>
         <div>
             <Markdown>{{ `## 加载中\n<p>使用
-                    <code>loading</code>来定义按钮是否正在加载。
+                    <code>loading</code> 来定义按钮是否正在加载。
                 </p>` }}
             </Markdown>
             <div class="demolist">
@@ -63,7 +63,7 @@
 <script setup lang="ts">
 import Button from '@/lib/Button.vue';
 import { ref } from 'vue';
-import Markdown from '@/components/Markdown.vue';
+
 /**
  * click
  * focus

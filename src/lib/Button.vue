@@ -177,7 +177,7 @@ $wpadding: 18px;
 
     // 相同class并排时，给出间隔
     &+& {
-        margin-left: 8px;
+        // margin-left: 8px;
     }
 
     /**
