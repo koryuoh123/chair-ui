@@ -8,10 +8,13 @@ import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
+import { demoPlugin } from './src/plugins/demo'
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
+    demoPlugin(),
     // vueDevTools(),
     createSvgIconsPlugin({
       iconDirs: [path.resolve(process.cwd(), 'src/assets/svgs')], // SVG存放路径

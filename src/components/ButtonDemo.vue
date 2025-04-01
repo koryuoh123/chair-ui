@@ -8,12 +8,9 @@
                     <code>size</code> 来定义按钮大小。
                 </p>` }}
             </Markdown>
-
-            <div class="demolist">
-                <Button @click="clickEvent" @focus="focusEvent" size="small">Button</Button>
-                <Button @click="clickEvent" @focus="focusEvent">Button</Button>
-                <Button @click="clickEvent" @focus="focusEvent" size="large">Button</Button>
-            </div>
+            <sizeDemo />
+            <pre v-text="sizeDemo._sourceCodeTitle"></pre>
+            <pre v-text="sizeDemo._sourceCode"></pre>
         </div>
 
         <div>
@@ -33,7 +30,7 @@
         </div>
 
         <div>
-            <Markdown>{{ `## 主题\n<p>使用
+            <Markdown>{{ `## 禁用\n<p>使用
                     <code>disabed</code> 来定义按钮是否被禁用。
                 </p>` }}
             </Markdown>
@@ -62,8 +59,11 @@
 
 <script setup lang="ts">
 import Button from '@/lib/Button.vue';
-import { ref } from 'vue';
-
+import { onMounted, ref } from 'vue';
+import sizeDemo from '@/views/doc/Button/sizeDemo.vue'
+onMounted(() => {
+    console.log(sizeDemo)
+})
 /**
  * click
  * focus

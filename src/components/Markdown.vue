@@ -8,7 +8,7 @@ import { useSlots, computed } from 'vue';
 const slots = useSlots()
 const content = computed(() => {
     const slot = slots.default?.()
-    console.log(slot);
+    // console.log(slot);
 
     if (slot?.length) {
         let c = ''

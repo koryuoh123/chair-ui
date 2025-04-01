@@ -877,7 +877,7 @@
     "@babel/parser" "^7.26.9"
     "@vue/compiler-sfc" "^3.5.13"
 
-"@vue/compiler-core@3.5.13":
+"@vue/compiler-core@3.5.13", "@vue/compiler-core@^3.5.13":
   version "3.5.13"
   resolved "https://registry.yarnpkg.com/@vue/compiler-core/-/compiler-core-3.5.13.tgz#b0ae6c4347f60c03e849a05d34e5bf747c9bda05"
   integrity sha512-oOdAkwqUfW1WqpwSYJce06wvt6HljgY3fGeM9NcVA1HaYOij3mZG9Rkysn0OHuyUAGMbEbARIpsG+LPVlBJ5/Q==
