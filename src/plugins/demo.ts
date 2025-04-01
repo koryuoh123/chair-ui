@@ -20,17 +20,22 @@ export function demoPlugin(): Plugin {
         return null
       }
       title = demo?.content || ''
-      main = demo?.map?.sourcesContent?.join('') || ''
+      if (demo?.map?.sourcesContent) {
+        // demo?.map?.sourcesContent.splice(0, 1)
+        main = demo?.map?.sourcesContent?.join('') || ''
+        main = main.slice(main.indexOf('<template>'), main.length + 1)
+      }
+      // console.log(main)
       // 处理掉"demo"块,不解析
       code = code.replace('import block0', '// import block0')
 
       code =
         code.slice(0, code.indexOf('_name')) +
-        `sourceCode:${JSON.stringify(main)},_sourceCodeTitle:${JSON.stringify(title)},` +
+        `_sourceCode:${JSON.stringify(main)},__sourceCodeTitle:${JSON.stringify(title)},` +
         code.slice(code.indexOf('_name'), code.length + 1)
 
       return {
-        code: `${code}\nexport const code = 123`,
+        code,
       }
     },
   }

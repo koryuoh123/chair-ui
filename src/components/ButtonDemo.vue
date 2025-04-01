@@ -4,13 +4,9 @@
         <div>
             <Markdown>{{ `# 按钮\n<p>常用的操作按钮</p>` }}
             </Markdown>
-            <Markdown>{{ `## 大小\n<p>使用
-                    <code>size</code> 来定义按钮大小。
-                </p>` }}
-            </Markdown>
-            <sizeDemo />
-            <pre v-text="sizeDemo._sourceCodeTitle"></pre>
-            <pre v-text="sizeDemo._sourceCode"></pre>
+
+            <Demo :component="sizeDemo" />
+
         </div>
 
         <div>
@@ -60,6 +56,7 @@
 <script setup lang="ts">
 import Button from '@/lib/Button.vue';
 import { onMounted, ref } from 'vue';
+import Demo from '@/components/Demo.vue'
 import sizeDemo from '@/views/doc/Button/sizeDemo.vue'
 onMounted(() => {
     console.log(sizeDemo)

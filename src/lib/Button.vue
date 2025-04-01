@@ -118,7 +118,7 @@ $wpadding: 18px;
     &:hover:not(.disabled) {
         .chair-button-text-content {
             color: color-mix(in srgb, var(--theme-color, $color) 40%, white);
-            text-shadow: 0 0 2px var(--theme-color, $color), 0 0 10px var(--theme-color, $color), 0 0 10px var(--theme-color, $color), 0 0 10px var(--theme-color, $color);
+            text-shadow: 0 0 1px var(--theme-color, $color), 0 0 1px var(--theme-color, $color), 0 0 1px var(--theme-color, $color), 0 0 1px var(--theme-color, $color);
         }
 
         .chair-button-decoration-border:before,
