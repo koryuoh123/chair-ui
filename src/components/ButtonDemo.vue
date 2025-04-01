@@ -1,5 +1,5 @@
 <template>
-    <div class="demo-wrapper">
+    <div class="markdown-body demo-wrapper ">
         <h2>大小</h2>
         <div class="demolist">
             <Button @click="clickEvent" @focus="focusEvent" size="small">Button</Button>
@@ -60,7 +60,13 @@ const focusEvent = () => {
 }
 
 ::-webkit-scrollbar {
-    display: none;
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #574A5B;
+    border-radius: 10px;
+    transition: all .2s ease-in-out;
 }
 
 .demo-wrapper {
@@ -75,7 +81,7 @@ const focusEvent = () => {
         color: var(--color-text-light-1);
         margin-bottom: 1em;
         text-indent: 1em;
-        font-size: 1.5rem;
+
     }
 }
 </style>
