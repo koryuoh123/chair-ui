@@ -18,7 +18,7 @@ body {
 /* 定义字体 */
 @font-face {
   font-family: 'titleBlack';
-  src: url('/public/title-black.ttf') format('truetype');
+  src: url('/title-black.ttf') format('truetype');
 }
 html {
   font-size: 16px;
