@@ -1,6 +1,14 @@
 <template>
     <div class="markdown-body demo-wrapper">
-        <Switch v-model="checked" />
+        <div style="display: flex; gap: 20px;">
+
+            <Switch v-model="checked" />
+            <Switch v-model="checked" size="small" mainColor="pink" subColor="#4d4df6" />
+            <Switch v-model="checked" size="small" theme="success" />
+            <Switch v-model="checked" size="small" theme="warning" />
+            <Switch v-model="checked" size="small" theme="danger" />
+            <Switch v-model="checked" size="small" theme="info" />
+        </div>
     </div>
 </template>
 

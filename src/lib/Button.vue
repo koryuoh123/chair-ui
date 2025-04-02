@@ -99,13 +99,9 @@ function getActualBgColor(e) {
 }
 let buttonbg = ref('')
 onMounted(() => {
-    // console.log(buttonRef.value instanceof Element);
     if (buttonRef.value) {
         buttonbg.value = getActualBgColor(buttonRef.value);
-
     }
-
-
 })
 </script>
 
