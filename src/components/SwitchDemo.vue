@@ -1,5 +1,5 @@
 <template>
-    <div class="demo-wrapper">
+    <div class="markdown-body demo-wrapper">
         <Switch v-model="checked" />
     </div>
 </template>
@@ -15,6 +15,12 @@ const checked = ref(false)
 <style scoped lang="scss">
 .demo-wrapper {
     width: 100%;
-    border: 1px dashed red;
+    height: 100%;
+    padding: 0px 24px 12px 36px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    color: var(--color-text-light-1);
 }
 </style>

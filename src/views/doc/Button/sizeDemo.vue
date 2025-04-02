@@ -1,17 +1,24 @@
-<demo>## 大小<br/><br/><p>使用 <code>size</code> 来定义按钮大小。</p></demo>
+<demo>## 调整尺寸<br/><br/><p>使用 <code>size</code> 来定义按钮大小。</p></demo>
 
 <template>
     <div class="demolist">
         <!-- small -->
-        <Button size="small">Button</Button>
+        <Button size="small">Small</Button>
         <!-- default -->
-        <Button>Button</Button>
+        <Button>Default</Button>
         <!-- large -->
-        <Button size="large">Button</Button>
+        <Button size="large">Large</Button>
     </div>
 </template>
 
 <script setup lang='ts'>
 import Button from '@/lib/Button.vue'
 </script>
-<style lang='scss' scoped></style>
+<style lang='scss' scoped>
+.demolist {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 12px;
+}
+</style>

@@ -12,9 +12,17 @@
             <span class="chair-button-decoration-border">
 
             </span>
+            <span class="chair-button-text-content"
+                :style="{ pointerEvents: (props.disabled || props.loading) ? 'none' : 'auto' }">
 
-            <span class="chair-button-text-content">
-                <SvgIcon v-if="props.loading" iconName="loading-icon" class="loading-icon" />
+                <div v-if="props.loading" class="loading-icon-wrapper">
+                    <slot name="loading-icon">
+                        <!-- 如果没传插槽就展示这个 -->
+                        <div class="loading-icon"></div>
+                    </slot>
+                </div>
+
+
                 <slot></slot>
             </span>
 
@@ -111,11 +119,69 @@ $wpadding: 18px;
 
 // 定义主题混合器
 @mixin theme-style($color) {
+    &.loading {
+        pointer-events: none;
+        opacity: 0.7;
+
+        .chair-button-text-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .loading-icon-wrapper {
+                margin-right: 4px;
+                animation: chair-spin 1.5s linear infinite;
+            }
+
+            .loading-icon {
+                height: .8em;
+                width: .8em;
+                // display: inline-block;
+
+                // animation: chair-spin 1s linear infinite;
+
+
+                position: relative;
+                border-radius: 50%;
+                background: linear-gradient(45deg, transparent, transparent 40%, color-mix(in srgb, var(--theme-color, $color) 40%, white));
+
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: calc(2.5em / 150px * 6px);
+                    left: calc(2.5em / 150px * 6px);
+                    right: calc(2.5em / 150px * 6px);
+                    bottom: calc(2.5em / 150px * 6px);
+                    background: var(--buttonbg);
+                    border-radius: 50%;
+                    z-index: 100;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    right: 0px;
+                    bottom: 0px;
+                    background: linear-gradient(45deg, transparent, transparent 40%, var(--theme-color, $color));
+
+                    border-radius: 50%;
+                    z-index: 1;
+                    filter: blur(calc(.8em / 150px * 15px));
+                }
+            }
+        }
+
+    }
+
     .chair-button-text-content {
         color: var(--theme-color, $color);
     }
 
-    &:hover:not(.disabled) {
+    &:hover:not(.disabled),
+    &.loading {
         .chair-button-text-content {
             color: color-mix(in srgb, var(--theme-color, $color) 40%, white);
             text-shadow: 0 0 1px var(--theme-color, $color), 0 0 1px var(--theme-color, $color), 0 0 1px var(--theme-color, $color), 0 0 1px var(--theme-color, $color);
@@ -177,7 +243,7 @@ $wpadding: 18px;
 
     // 相同class并排时，给出间隔
     &+& {
-        // margin-left: 8px;
+        margin-left: 3px;
     }
 
     /**
@@ -205,29 +271,18 @@ $wpadding: 18px;
 
         // 禁用
         &.disabled {
-            opacity: 0.5;
+            opacity: 0.7;
             cursor: not-allowed;
-        }
 
-        &.loading {
-            pointer-events: none;
-            opacity: 0.5;
-
-            .chair-button-text-content {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
-                .loading-icon {
-                    height: 1em;
-                    width: 1em;
-                    display: inline-block;
-                    margin-right: 4px;
-                    animation: chair-spin 1s linear infinite;
-                }
+            &:before,
+            &:after,
+            .chair-button-decoration-border:before,
+            .chair-button-decoration-border:after {
+                filter: opacity(.25);
             }
-
         }
+
+
 
 
 
@@ -253,6 +308,7 @@ $wpadding: 18px;
             z-index: 2;
             letter-spacing: 0.1em;
             white-space: nowrap;
+
         }
 
         // 主题样式
@@ -276,7 +332,8 @@ $wpadding: 18px;
             @include theme-style(var(--chair-info-color));
         }
 
-        &:hover:not(.disabled) {
+        &:hover:not(.disabled),
+        &.loading {
 
             .chair-button-decoration-border:before,
             .chair-button-decoration-border:after,

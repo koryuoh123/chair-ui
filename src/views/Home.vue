@@ -168,6 +168,7 @@ onUnmounted(() => {
             :deep(.start-button) {
                 background: #030014;
                 margin-top: 10vh;
+                font-size: 2rem;
 
                 a {
                     font-size: 2rem;
