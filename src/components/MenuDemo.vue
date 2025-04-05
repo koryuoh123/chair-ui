@@ -1,41 +1,23 @@
 <template>
-    <div class="demo-wrapper">
-
-        <Menu>
-            <MenuItem>
-            Meat
-            </MenuItem>
-            <SubMenu>
-                <template #title>
-                    Fruits
-                </template>
-                <MenuItem>apple</MenuItem>
-                <MenuItem>banana</MenuItem>
-            </SubMenu>
-            <SubMenu>
-                <template #title>
-                    Animals
-                </template>
-                <MenuItem>dog</MenuItem>
-                <MenuItem>cat</MenuItem>
-            </SubMenu>
-        </Menu>
+    <div class="markdown-body demo-wrapper ">
+        <Markdown>{{ `# Menu 菜单\n<p>为网站提供导航功能的菜单。</p>` }}
+        </Markdown>
+        <div>
+            <Demo :component="basicDemo" />
+        </div>
     </div>
+
+
 </template>
 <script setup lang='ts'>
-import Menu from '@/lib/Menu.vue'
-import SubMenu from '@/lib/SubMenu.vue'
-import MenuItem from '@/lib/MenuItem.vue'
-import { onMounted, ref } from 'vue'
 
+import { onMounted, ref } from 'vue'
+import Demo from '@/components/Demo.vue'
+import basicDemo from '@/views/doc/Menu/basicDemo.vue'
 onMounted(() => {
 
 })
 </script>
 <style lang='scss' scoped>
-.demo-wrapper {
-    display: flex;
-    flex-direction: column;
-    padding: 4px 12px;
-}
+@use '@/views/doc/demoDoc.scss'
 </style>

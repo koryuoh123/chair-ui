@@ -1,5 +1,5 @@
 <template>
-    <div class="chair-menu" :class="{ 'default-background': background }">
+    <div class="chair-menu" :class="{ 'default-background': props.background }">
         <slot></slot>
     </div>
 </template>
@@ -21,7 +21,7 @@ const props = withDefaults(defineProps<{
 
     &.default-background {
         height: 45px;
-        background-color: #1D1A2F;
+        background-color: var(--color-bg-dark-1);
         font-size: 16px;
     }
 }

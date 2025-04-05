@@ -25,3 +25,12 @@ html {
   /* min-width: 500px; */
   min-height: 100vh;
 }
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #574a5b;
+  border-radius: 10px;
+  transition: all 0.2s ease-in-out;
+}

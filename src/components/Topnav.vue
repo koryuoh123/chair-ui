@@ -8,10 +8,10 @@
         <div class="menu" :style="{ marginRight: isHome ? 'auto' : 'unset' }">
             <Menu :background="false">
                 <MenuItem v-if="!isHome">
-                <RouterLink to="/">Home</RouterLink>
+                <RouterLink to="/home">Home</RouterLink>
                 </MenuItem>
                 <MenuItem>
-                Guide
+                <RouterLink to="/guide">Guide</RouterLink>
                 </MenuItem>
                 <SubMenu>
                     <template #title>Components</template>
@@ -31,7 +31,7 @@
                     <RouterLink to="/components/menu">Menu</RouterLink>
                     </MenuItem>
                 </SubMenu>
-                <MenuItem>Resources</MenuItem>
+                <!-- <MenuItem>Resources</MenuItem> -->
             </Menu>
         </div>
 
@@ -55,7 +55,10 @@ const toggleAsideVisible = () => {
 import { useRoute } from 'vue-router'
 
 const route = useRoute();
-const isHome = computed(() => route.path === '/')
+const isHome = computed(() => {
+    console.log(route.path);
+    return route.path === '/home'
+})
 
 </script>
 
@@ -109,7 +112,9 @@ const isHome = computed(() => route.path === '/')
         cursor: pointer;
         height: 16px;
         width: 16px;
-        margin-left: 1em;
+        // margin-left: 1em;
+        position: absolute;
+        left: 1em;
     }
 
     >.menu {

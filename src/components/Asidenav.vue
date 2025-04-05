@@ -1,10 +1,37 @@
 <template>
     <div class="asidenav">
-        <RouterLink to="/components/button">button</RouterLink>
-        <RouterLink to="/components/switch">switch</RouterLink>
-        <RouterLink to="/components/dialog">dialog</RouterLink>
-        <RouterLink to="/components/tabs">tabs</RouterLink>
-        <RouterLink to="/components/menu">menu</RouterLink>
+        <div>
+            <RouterLink to="/home">
+                <h2>Home 首页</h2>
+            </RouterLink>
+        </div>
+        <div>
+            <RouterLink to="/guide">
+                <h2>Guide 指南</h2>
+            </RouterLink>
+        </div>
+        <div>
+            <h2>Components 组件</h2>
+        </div>
+        <div>
+            <RouterLink to="/components/button">button 按钮</RouterLink>
+        </div>
+        <div>
+
+            <RouterLink to="/components/switch">switch 开关</RouterLink>
+        </div>
+        <div>
+
+            <RouterLink to="/components/dialog">dialog 对话框</RouterLink>
+        </div>
+        <div>
+
+            <RouterLink to="/components/tabs">tabs 标签页</RouterLink>
+        </div>
+        <div>
+
+            <RouterLink to="/components/menu">menu 菜单</RouterLink>
+        </div>
     </div>
     <div class="mask" v-if="asideVisible" @click="toggleAsideVisible"></div>
 </template>
@@ -33,18 +60,46 @@ router.afterEach(() => {
 .asidenav {
     width: 200px;
     height: 100%;
-
     color: var(--color-text-light-1);
     display: flex;
     flex-direction: column;
-    // justify-content: center;
-    background-color: #181627;
+    gap: 6px;
+    background-color: var(--color-bg-dark-dialog);
     border-right: 1px solid #2B283E;
+    padding: 16px;
 
     a {
         color: inherit;
         text-decoration: none;
-        font-size: 20px;
+        font-size: 16px;
+        width: 100%;
+        height: 100%;
+        display: block;
+
+
+        &:hover {
+            color: var(--color-text-light-2);
+        }
+    }
+
+    .router-link-active {
+        color: var(--color-text-primary);
+    }
+
+    h2 {
+        color: inherit;
+        font-weight: bold;
+        font-size: 18px;
+        // cursor: pointer;
+
+        // &:hover {
+        //     color: var(--color-text-light-2);
+        // }
+    }
+
+    div {
+        padding: 6px 0;
+        width: 100%;
     }
 }
 

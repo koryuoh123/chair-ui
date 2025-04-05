@@ -18,4 +18,11 @@ defineProps({
     font-size: inherit;
     fill: currentColor;
 }
+
+.auto-size {
+    height: 100%;
+    width: 100%;
+    font-size: inherit;
+    fill: currentColor;
+}
 </style>

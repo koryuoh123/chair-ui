@@ -1,0 +1,46 @@
+.demo-wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 0px 24px 12px 36px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  color: var(--color-text-light-1);
+
+  :deep() {
+    h1,
+    h2,
+    p {
+      color: var(--color-text-light-1);
+      // text-indent: 1em;
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    .demo-block {
+      display: flex;
+      flex-direction: column;
+
+      p {
+        line-height: 42px;
+        letter-spacing: 1.5px;
+        color: var(--color-text-light-1);
+      }
+      .demolist {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        padding-bottom: 12px;
+      }
+    }
+  }
+}
+.demolist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-top: 12px;
+}

@@ -3,7 +3,10 @@
         <Topnav class="topnav" />
         <div class="content">
             <Asidenav v-if="asideVisible" />
-            <RouterView />
+            <div class="main">
+
+                <RouterView />
+            </div>
         </div>
     </div>
 
@@ -18,12 +21,14 @@ const asideVisible = ref(true)
 provide('asideVisible', asideVisible)
 
 onMounted(() => {
-    const cw = document.documentElement.clientWidth
-    if (cw <= 500) {
-        asideVisible.value = false
-    } else {
-        asideVisible.value = true
-    }
+    window.addEventListener('resize', () => {
+        const cw = document.documentElement.clientWidth
+        if (cw <= 500) {
+            asideVisible.value = false
+        } else {
+            asideVisible.value = true
+        }
+    })
 })
 
 
@@ -33,7 +38,6 @@ onMounted(() => {
 .wrapper {
     display: flex;
     flex-direction: column;
-    // position: relative;
     height: 100%;
 
     >.topnav {
@@ -43,15 +47,17 @@ onMounted(() => {
     >.content {
         width: 100%;
         display: flex;
-        // height: calc(100% - 50px);
         z-index: 400;
-
-
         background: #181627;
         height: 0;
         flex-grow: 1;
-        ;
         overflow: hidden;
+
+        .main {
+            flex-grow: 1;
+            width: 0;
+            height: 100%;
+        }
     }
 }
 </style>

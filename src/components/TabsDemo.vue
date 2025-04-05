@@ -1,34 +1,26 @@
 <template>
-    <div class="demo-wrapper">
-        <h1>默认样式</h1>
-        <Tabs v-model="tabModel1">
-            <Tab-item name="first">1</Tab-item>
-            <Tab-item name="second">2</Tab-item>
-            <Tab-item name="third33333">3</Tab-item>
-        </Tabs>
-        <h1>card样式</h1>
-        <Tabs v-model="tabModel2" type="card">
-            <Tab-item name="first">1</Tab-item>
-            <Tab-item name="second">2</Tab-item>
-            <Tab-item name="third">3</Tab-item>
-        </Tabs>
+
+    <div class="markdown-body demo-wrapper ">
+        <Markdown>{{ `# Tabs 标签页\n<p>分隔内容上有关联但属于不同类别的数据集合。</p>` }}
+        </Markdown>
+        <div>
+            <Demo :component="basicDemo" />
+        </div>
+        <div>
+            <Demo :component="cardDemo" />
+        </div>
+        <div>
+            <Demo :component="cardBorderDemo" />
+        </div>
     </div>
+
 </template>
 <script setup lang='ts'>
-import Tabs from '@/lib/Tabs.vue'
-import TabItem from '@/lib/TabItem.vue'
-import { onMounted, ref } from 'vue'
-const tabsRef = ref<InstanceType<typeof Tabs>>()
-const tabModel1 = ref(0)
-const tabModel2 = ref('second')
-onMounted(() => {
-
-})
+import Demo from '@/components/Demo.vue'
+import basicDemo from '@/views/doc/Tabs/basicDemo.vue'
+import cardDemo from '@/views/doc/Tabs/cardDemo.vue'
+import cardBorderDemo from '@/views/doc/Tabs/cardBorderDemo.vue'
 </script>
 <style lang='scss' scoped>
-.demo-wrapper {
-    display: flex;
-    flex-direction: column;
-
-}
+@use '@/views/doc/demoDoc.scss';
 </style>

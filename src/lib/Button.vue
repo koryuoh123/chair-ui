@@ -18,10 +18,10 @@
                 <div v-if="props.loading" class="loading-icon-wrapper">
                     <slot name="loading-icon">
                         <!-- 如果没传插槽就展示这个 -->
-                        <div class="loading-icon"></div>
+                        <div class="loading-icon"
+                            v-chair-loading="{ visible: props.loading, color: themeColor, color2: buttonbg }"></div>
                     </slot>
                 </div>
-
 
                 <slot></slot>
             </span>
@@ -62,7 +62,7 @@ const props = withDefaults(defineProps<{
     color?: string; // 添加自定义颜色属性
     buttonClass?: string;
 }>(), {
-    theme: 'primary',
+    theme: 'default',
     disabled: false,
     loading: false,
     color: '' // 默认为空
@@ -75,13 +75,14 @@ const themeColor = computed(() => {
     }
     // 如果没有自定义颜色，则使用主题对应的CSS变量
     const themeMap: Record<string, string> = {
+        default: 'var(--color-text-light-1)',
         primary: 'var(--color-text-primary)',
         success: 'var(--chair-success-color)',
         warning: 'var(--chair-warning-color)',
         danger: 'var(--color-text-danger)',
         info: 'var(--chair-info-color)'
     };
-    return themeMap[props.theme] || themeMap.primary;
+    return themeMap[props.theme] || themeMap.default;
 });
 
 const buttonRef = ref<HTMLButtonElement>();
@@ -137,36 +138,6 @@ $wpadding: 18px;
                 // animation: chair-spin 1s linear infinite;
 
 
-                position: relative;
-                border-radius: 50%;
-                background: linear-gradient(45deg, transparent, transparent 40%, color-mix(in srgb, var(--theme-color, $color) 40%, white));
-
-
-                &::before {
-                    content: '';
-                    position: absolute;
-                    top: calc(2.5em / 150px * 6px);
-                    left: calc(2.5em / 150px * 6px);
-                    right: calc(2.5em / 150px * 6px);
-                    bottom: calc(2.5em / 150px * 6px);
-                    background: var(--buttonbg);
-                    border-radius: 50%;
-                    z-index: 100;
-                }
-
-                &::after {
-                    content: '';
-                    position: absolute;
-                    top: 0px;
-                    left: 0px;
-                    right: 0px;
-                    bottom: 0px;
-                    background: linear-gradient(45deg, transparent, transparent 40%, var(--theme-color, $color));
-
-                    border-radius: 50%;
-                    z-index: 1;
-                    filter: blur(calc(.8em / 150px * 15px));
-                }
             }
         }
 
@@ -308,6 +279,10 @@ $wpadding: 18px;
         }
 
         // 主题样式
+        &.chair-theme-default {
+            @include theme-style(var(--color-text-light-1));
+        }
+
         &.chair-theme-primary {
             @include theme-style(var(--color-text-primary));
         }
@@ -356,10 +331,6 @@ $wpadding: 18px;
             right: -2px;
         }
 
-
-
-
-
         &:before {
             bottom: -2px;
             left: -2px;
@@ -369,16 +340,6 @@ $wpadding: 18px;
             bottom: -2px;
             right: -2px;
         }
-    }
-}
-
-@keyframes chair-spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
     }
 }
 </style>

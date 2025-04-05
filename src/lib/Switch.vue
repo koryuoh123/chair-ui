@@ -1,31 +1,40 @@
 <template>
-    <div ref="buttonRef" class="chair-switch-wrapper" size="medium"
-        :class="{ [`chair-theme-${props.theme}`]: props.theme, checked, }" :style="{
-            '--main-color': mainColor,
-            '--sub-color': subColor,
-            '--buttonbg': buttonbg
-        }">
-        <div class="chair-switch" @click="toggle" :class="{
-
-            disabled: props.disabled,
-            loading: props.loading
-        }" :disabled="props.disabled">
+    <div ref="buttonRef" class="chair-switch-wrapper" size="medium" :class="{
+        [`chair-theme-${props.theme}`]: props.theme,
+        checked,
+        disabled: props.disabled,
+        loading: props.loading
+    }" :style="{
+        '--main-color': mainColor,
+        '--sub-color': subColor,
+        '--buttonbg': buttonbg
+    }" @click="toggle">
+        <div v-if="props.loading" v-chair-loading="{ visible: props.loading, color: mainColor, color2: subColor }"
+            style="margin-right: 10px;"></div>
+        <div class="chair-switch">
             <div class="block-wrapper">
                 <div class="uncheck-block">
-                    <div class="icon">
-                        <!-- <SvgIcon iconName="mistake-icon" /> -->
+                    <div class="icon-wrapper">
+                        <slot name="inactive-icon">
+                            <SvgIcon iconName="mistake-icon" />
+                        </slot>
+
                     </div>
                 </div>
                 <div class="checked-block">
-                    <div class="icon">
-                        <!-- <SvgIcon iconName="correct-icon" /> -->
+                    <div class="icon-wrapper">
+                        <slot name="active-icon">
+                            <SvgIcon iconName="correct-icon" />
+                        </slot>
+
+
                     </div>
                 </div>
             </div>
 
         </div>
-        <div class="chair-switch-decoration">
-            {{ checked }}
+        <div class="chair-switch-decoration" v-if="props.textVisible">
+            {{ switchText }}
         </div>
     </div>
 </template>
@@ -39,7 +48,24 @@ const checked = defineModel<boolean>({
     default: false
 });
 const toggle = () => {
-    checked.value = !checked.value;
+    if (props.beforeChange) {
+        // 判断是否返回promise
+
+        const result = props.beforeChange();
+        if (result instanceof Promise) {
+            result.then((res) => {
+                if (res) {
+                    checked.value = !checked.value;
+                }
+            });
+        } else if (result === true) {
+            checked.value = !checked.value;
+        }
+    } else {
+
+        if (props.disabled || props.loading) return;
+        checked.value = !checked.value;
+    }
 };
 
 
@@ -49,9 +75,19 @@ const props = withDefaults(defineProps<{
     loading?: boolean;
     mainColor?: string; // 添加自定义颜色属性
     subColor?: string; // 添加自定义颜色属性
+    activeText?: string;
+    inactiveText?: string;
+    textVisible?: boolean;
+    beforeChange?: () => boolean | Promise<boolean>;
 }>(), {
     theme: 'primary',
-
+    activeText: 'Open',
+    inactiveText: 'Close',
+    textVisible: true,
+});
+// 展示的text
+const switchText = computed(() => {
+    return checked.value ? props.activeText : props.inactiveText;
 });
 // 计算实际使用的颜色，在scss中用--buton-color可获取
 const mainColor = computed(() => {
@@ -104,7 +140,7 @@ onMounted(() => {
     .chair-switch-decoration {
         bottom: 1px;
         left: $height;
-        min-width: calc($height + 15px);
+        min-width: calc($height + 2px);
         font-size: $font-size;
         border-width: $border-width;
     }
@@ -134,34 +170,8 @@ onMounted(() => {
 @mixin theme-style($sub-color, $main-color) {
     &.checked {
         .chair-switch {
-            border-color: color-mix(in srgb, var(--main-color, $sub-color) 80%, white);
-            box-shadow: 0 0 5px var(--main-color, $sub-color), 0 0 5px var(--main-color, $sub-color), inset 0 0 5px var(--main-color, $sub-color), inset 0 0 5px var(--main-color, $sub-color);
-
-            .icon {
-                &:before {
-                    content: '';
-                    position: absolute;
-                    bottom: 0;
-                    left: 60%;
-                    width: 3px;
-                    height: 100%;
-                    background-color: color-mix(in srgb, var(--main-color, $sub-color) 80%, white);
-                    rotate: 45deg;
-                    border-radius: 2px;
-                }
-
-                &:after {
-                    content: '';
-                    position: absolute;
-                    bottom: 0;
-                    left: 10%;
-                    width: 3px;
-                    height: 50%;
-                    background-color: color-mix(in srgb, var(--main-color, $sub-color) 80%, white);
-                    rotate: -45deg;
-                    border-radius: 2px;
-                }
-            }
+            // border-color: color-mix(in srgb, var(--main-color, $sub-color) 80%, white);
+            // box-shadow: 0 0 5px var(--main-color, $sub-color), 0 0 5px var(--main-color, $sub-color), inset 0 0 5px var(--main-color, $sub-color), inset 0 0 5px var(--main-color, $sub-color);
         }
     }
 
@@ -172,47 +182,16 @@ onMounted(() => {
 
 
         .uncheck-block {
+
+            background-color: $main-color;
+            color: color-mix(in srgb, $sub-color 95%, white);
+        }
+
+        .checked-block {
             background-color: var(--main-color, $sub-color);
             color: color-mix(in srgb, $main-color 95%, white);
 
         }
-
-        .checked-block {
-            background-color: $main-color;
-            // color: $sub-color;
-            color: color-mix(in srgb, $sub-color 95%, white);
-
-        }
-
-        .icon {
-            &:before {
-                content: '';
-                position: absolute;
-                bottom: -2%;
-                left: 34%;
-                width: 3px;
-                height: 110%;
-                background-color: $main-color;
-                rotate: 45deg;
-                border-radius: 2px;
-
-            }
-
-            &:after {
-                content: '';
-                position: absolute;
-                bottom: -2%;
-                left: 34%;
-                width: 3px;
-                height: 110%;
-                background-color: $main-color;
-                rotate: -45deg;
-                border-radius: 2px;
-
-            }
-        }
-
-
     }
 
     .chair-switch-decoration {
@@ -230,7 +209,7 @@ onMounted(() => {
 }
 
 .chair-switch {
-    cursor: pointer;
+
     position: relative;
     overflow: hidden;
 
@@ -245,7 +224,7 @@ onMounted(() => {
             flex-grow: 1;
             position: relative;
 
-            .icon {
+            .icon-wrapper {
                 position: absolute;
                 top: 50%;
                 left: 50%;
@@ -256,8 +235,20 @@ onMounted(() => {
 }
 
 .chair-switch-wrapper {
-
+    cursor: pointer;
     display: flex;
+    align-items: center;
+
+    &.loading {
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+
+    &.disabled {
+        cursor: not-allowed;
+        // pointer-events: none;
+        opacity: 0.7;
+    }
 
     &.checked {
         .block-wrapper {
@@ -296,7 +287,11 @@ onMounted(() => {
     }
 
     &[size="medium"] {
-        @include size-style(18px, 32px, 2px);
+        @include size-style(18px, 30px, 2px);
+    }
+
+    &[size="large"] {
+        @include size-style(22px, 36px, 2px);
     }
 
 

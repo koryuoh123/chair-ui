@@ -48,6 +48,8 @@ const html = computed(() => {
 })
 </script>
 <style lang='scss' scoped>
+@use 'sass:color';
+
 .demo {
     display: flex;
     flex-direction: column;
@@ -59,7 +61,7 @@ const html = computed(() => {
         gap: 12px;
         border: 1px solid #3a3849;
         border-radius: 4px;
-        background-color: darken(#201e30, 2%);
+        background-color: color.adjust(#201e30, $lightness: -2%);
 
         .demo-component {
             padding: 24px;

@@ -24,6 +24,60 @@
       cursor: pointer;
     }
   }
+
+  .chair-default-loading-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 0.8em;
+    min-width: 0.8em;
+    // height: 100%;
+    // width: 100%;
+    position: relative;
+    border-radius: 50%;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      transparent 40%,
+      color-mix(in srgb, var(--theme-color, #9384e5) 40%, white)
+    );
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: calc(2.5em / 150px * 6px);
+      left: calc(2.5em / 150px * 6px);
+      right: calc(2.5em / 150px * 6px);
+      bottom: calc(2.5em / 150px * 6px);
+      background: var(--buttonbg, #ffffff);
+      border-radius: 50%;
+      z-index: 100;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      background: linear-gradient(45deg, transparent, transparent 40%, var(--theme-color, #9384e5));
+      border-radius: 50%;
+      z-index: 1;
+      filter: blur(calc(0.8em / 150px * 15px));
+    }
+
+    animation: chair-spin 1.5s linear infinite;
+  }
+  @keyframes chair-spin {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
@@ -55,6 +109,8 @@
   // --chair-info-color: #909399;
   --chair-border-color: #dcdfe6;
   --color-text-light-1: #a29eb4;
+  --color-text-light-2: #73707e;
+  --color-text-light-3: #4c4a53;
 }
 
 /* semantic color variables for this project */
@@ -75,6 +131,8 @@
   --color-text-danger: var(--chair-danger-color);
   --color-menu-text: var(--color-text-light-1);
   --color-bg-dark: #181627;
+  --color-bg-dark-2: #24232f;
+  --color-bg-dark-dialog: #1c1a2a;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -8,8 +8,18 @@ const router = createRouter({
   routes: [
     {
       path: '/',
+      redirect: '/home',
+    },
+    {
+      path: '/home',
       name: 'home',
       component: Home,
+    },
+    {
+      path: '/guide',
+      name: 'guide',
+      component: Basiclayout,
+      children: [{ path: '', component: () => import('@/views/Guide.vue') }],
     },
     {
       path: '/components',

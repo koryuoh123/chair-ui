@@ -17,7 +17,10 @@ export default defineConfig({
     demoPlugin(),
     // vueDevTools(),
     createSvgIconsPlugin({
-      iconDirs: [path.resolve(process.cwd(), 'src/assets/svgs')], // SVG存放路径
+      iconDirs: [
+        path.resolve(process.cwd(), 'src/assets/svgs'),
+        path.resolve(process.cwd(), 'src/lib/icons'),
+      ], // SVG存放路径
       symbolId: 'icon-[dir]-[name]', // ID命名规则
     }),
   ],

@@ -1,13 +1,15 @@
 <template>
-    <div class="chair-tabs-wrapper" :class="{ [`chair-tabs-nav-${props.type}`]: props.type }">
-        <div class="chair-tabs-nav" ref="sliderWrapperRef">
-            <div class="chair-tabs-nav-item" :ref="(el: any) => { if (currentTab === index) currentTabRef = el }"
-                :class="{ active: currentTab === index }" v-for="(item, index) in tabItems" :key="item?.props?.name"
-                @click="onTabClick(index, item?.props?.name)">
-                {{ item?.props?.name }}
+    <div class="chair-tabs-wrapper" :class="{ [`chair-tabs-nav-${props.type}`]: props.type, }">
+        <div class="chair-tabs-nav-wrapper">
+            <div class="chair-tabs-nav" ref="sliderWrapperRef">
+                <div class="chair-tabs-nav-item" :ref="(el: any) => { if (currentTab === index) currentTabRef = el }"
+                    :class="{ active: currentTab === index }" v-for="(item, index) in tabItems" :key="item?.props?.name"
+                    @click="onTabClick(index, item?.props?.name)">
+                    {{ item?.props?.name }}
 
+                </div>
+                <div class="chair-tabs-nav-slider" ref="sliderRef"></div>
             </div>
-            <div class="chair-tabs-nav-slider" ref="sliderRef"></div>
         </div>
         <div class="chair-tabs-content">
             <component :is="tabItems[currentTab]"></component>
@@ -22,7 +24,7 @@ const vmodel = defineModel<number | string>({ required: true })
 const props = withDefaults(defineProps<{
     type?: string
 }>(), {
-    type: 'default'
+    type: 'default',
 })
 
 const slots = useSlots();
@@ -93,45 +95,82 @@ defineExpose({
 }
 
 .chair-tabs-wrapper {
-    height: 500px;
-    width: 600px;
-
+    width: 100%;
+    min-height: 150px;
     display: flex;
     flex-direction: column;
+    background-color: var(--color-bg-dark-dialog);
+
+
+    .chair-tabs-nav-wrapper {
+        border-bottom: 1px solid var(--color-text-light-3);
+        min-height: 40px;
+    }
 
     .chair-tabs-nav {
-
-        min-height: 30px;
+        height: 100%;
+        // min-height: 30px;
         display: flex;
         justify-content: flex-start;
         align-items: center;
 
+
         .chair-tabs-nav-item {
-            padding: 4px 12px;
+            padding: 6px 12px;
             height: 100%;
             min-width: 72px;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
+            color: var(--color-text-light-1);
+
         }
     }
 
     &.chair-tabs-nav-card {
-        .chair-tabs-nav-item {
 
-            border: 1px solid transparent;
+        .chair-tabs-nav-wrapper {
+
+            position: relative;
+            // overflow: hidden;
+        }
+
+        .chair-tabs-nav {
+            position: absolute;
+            left: 0;
+            top: 1px;
+            z-index: 1;
+            background-color: var(--color-bg-dark-dialog);
+
+
+            :nth-child(1) {
+                border-top-left-radius: 2px;
+                border-left: 1px solid var(--color-text-light-3);
+            }
+
+            :nth-last-child(2) {
+                border-top-right-radius: 2px;
+            }
+        }
+
+        .chair-tabs-nav-item {
+            // border: 1px solid transparent;
+            border: 1px solid var(--color-text-light-3);
+            border-left: none;
+            transition: all 0.3s ease-in-out;
 
             &.active {
                 color: var(--color-text-primary);
-                border-color: var(--color-primary);
-
+                // border-bottom: var(--color-bg-dark-dialog);
+                border-bottom-color: transparent;
             }
         }
 
         .chair-tabs-content {
             @include chair-tabs-content;
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+            color: var(--color-text-light-1);
         }
     }
 
@@ -140,9 +179,11 @@ defineExpose({
 
         .chair-tabs-nav {
             position: relative;
-            border-bottom: 1px solid var(--chair-border-color);
+            // border-bottom: 1px solid var(--color-text-light-2);
 
             .chair-tabs-nav-item {
+
+
                 &.active {
                     color: var(--color-text-primary);
                     // border-bottom: 1px solid var(--color-text-primary);
@@ -162,7 +203,64 @@ defineExpose({
 
         .chair-tabs-content {
             @include chair-tabs-content;
+            color: var(--color-text-light-1);
         }
+    }
+
+    &.chair-tabs-nav-border-card {
+        .chair-tabs-nav-wrapper {
+            border-top: 1px solid var(--color-text-light-3);
+            border-left: 1px solid var(--color-text-light-3);
+            border-right: 1px solid var(--color-text-light-3);
+            position: relative;
+            background-color: var(--color-bg-dark-2);
+        }
+
+        .chair-tabs-nav {
+            position: absolute;
+            left: 0;
+            top: 1px;
+            z-index: 1;
+
+
+
+            .chair-tabs-nav-item {
+                border-bottom: 1px solid var(--color-text-light-3);
+                transition: background-color 0.3s ease-in-out;
+            }
+
+            .chair-tabs-nav-item.active {
+                background-color: var(--color-bg-dark-dialog);
+                border-left: 1px solid var(--color-text-light-3);
+                border-right: 1px solid var(--color-text-light-3);
+                border-bottom: transparent;
+                color: var(--color-text-primary);
+            }
+
+            :nth-child(1) {
+                border-top-left-radius: 2px;
+
+                &.active {
+                    border-left: none;
+                }
+            }
+
+            :nth-last-child(2) {
+                border-top-right-radius: 2px;
+            }
+        }
+
+        .chair-tabs-content {
+            border-left: 1px solid var(--color-text-light-3);
+            border-right: 1px solid var(--color-text-light-3);
+            border-bottom: 1px solid var(--color-text-light-3);
+
+            @include chair-tabs-content;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+            color: var(--color-text-light-1);
+
+        }
+
     }
 
 }

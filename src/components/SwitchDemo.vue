@@ -1,34 +1,43 @@
 <template>
-    <div class="markdown-body demo-wrapper">
-        <div style="display: flex; gap: 20px;">
-
-            <Switch v-model="checked" />
-            <Switch v-model="checked" size="small" mainColor="pink" subColor="#4d4df6" />
-            <Switch v-model="checked" size="small" theme="success" />
-            <Switch v-model="checked" size="small" theme="warning" />
-            <Switch v-model="checked" size="small" theme="danger" />
-            <Switch v-model="checked" size="small" theme="info" />
+    <div class="markdown-body demo-wrapper ">
+        <Markdown>{{ `# Switch 开关\n<p>表示两种相互对立的状态间的切换，多用于触发「开/关」。</p>` }}
+        </Markdown>
+        <div>
+            <Demo :component="sizeDemo" />
+        </div>
+        <div>
+            <Demo :component="themeDemo" />
+        </div>
+        <div>
+            <Demo :component="textDemo" />
+        </div>
+        <div>
+            <Demo :component="iconDemo" />
+        </div>
+        <div>
+            <Demo :component="disabledDemo" />
+        </div>
+        <div>
+            <Demo :component="loadingDemo" />
+        </div>
+        <div>
+            <Demo :component="stopDemo" />
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import Switch from '@/lib/Switch.vue';
-import { ref } from 'vue';
 
-const checked = ref(false)
-
+import Demo from '@/components/Demo.vue'
+import textDemo from '@/views/doc/Switch/textDemo.vue'
+import themeDemo from '@/views/doc/Switch/themeDemo.vue'
+import sizeDemo from '@/views/doc/Switch/sizeDemo.vue'
+import iconDemo from '@/views/doc/Switch/iconDemo.vue'
+import disabledDemo from '@/views/doc/Switch/disabledDemo.vue'
+import loadingDemo from '@/views/doc/Switch/loadingDemo.vue'
+import stopDemo from '@/views/doc/Switch/stopDemo.vue'
 </script>
 
 <style scoped lang="scss">
-.demo-wrapper {
-    width: 100%;
-    height: 100%;
-    padding: 0px 24px 12px 36px;
-    overflow: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    color: var(--color-text-light-1);
-}
+@use '@/views/doc/demoDoc.scss';
 </style>

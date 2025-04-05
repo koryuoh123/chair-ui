@@ -10,8 +10,8 @@ import router from './router'
 
 import 'virtual:svg-icons-register' // 自动注册所有SVG图标
 import SvgIcon from '@/components/SvgIcon.vue'
-
 import Markdown from '@/components/Markdown.vue'
+import chairLoading from '@/directives/chair-loading'
 
 const app = createApp(App)
 
@@ -20,4 +20,5 @@ app.use(router)
 
 app.component('SvgIcon', SvgIcon) // 全局注册组件，大小写要区分
 app.component('Markdown', Markdown) // 全局注册组件，大小写要区分
+app.directive('chair-loading', chairLoading) // 全局注册指令
 app.mount('#app')
