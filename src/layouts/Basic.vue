@@ -23,7 +23,7 @@ provide('asideVisible', asideVisible)
 router.afterEach(() => {
     const width = document.documentElement.clientWidth
     if (width <= 500) {
-        console.log(asideVisible?.value)
+        // console.log(asideVisible?.value)
         if (asideVisible?.value) {
             asideVisible.value = false
         }

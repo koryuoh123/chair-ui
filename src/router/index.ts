@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-// import HomeView from '../views/HomeView.vue'
+
 import Home from '@/views/Home.vue'
 import Basiclayout from '@/layouts/Basic.vue'
 
@@ -36,11 +36,11 @@ const router = createRouter({
     },
     /**
      * /* 的写法已经被废弃，使用 /:pathMatch(.*)* 代替
+     * 为了在github pages上默认访问到home，所以不用404页面了
      */
     {
       path: '/:pathMatch(.*)*',
-      name: '404',
-      component: () => import('@/views/404.vue'),
+      component: Home,
     },
   ],
 })

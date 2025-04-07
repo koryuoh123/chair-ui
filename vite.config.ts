@@ -12,6 +12,7 @@ import { demoPlugin } from './src/plugins/demo'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: './',
   plugins: [
     vue(),
     demoPlugin(),
