@@ -21,6 +21,7 @@
 </template>
 
 <script setup lang='ts'>
+// @ts-ignore
 import Prism from 'prismjs';
 import 'prismjs/themes/prism-tomorrow.css';
 import guide from './guide.ts'

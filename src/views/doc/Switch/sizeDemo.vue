@@ -3,11 +3,8 @@
 <template>
     <div class="demo-block">
         <div class="demolist">
-            <!-- small -->
             <Switch size="small" v-model="checked">Small</Switch>
-            <!-- default -->
             <Switch v-model="checked">Default</Switch>
-            <!-- large -->
             <Switch size="large" v-model="checked">Large</Switch>
         </div>
     </div>

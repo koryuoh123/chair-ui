@@ -15,19 +15,19 @@
                 <h2>Components 组件</h2>
             </div>
             <div>
-                <RouterLink to="/components/button">button 按钮</RouterLink>
+                <RouterLink to="/components/button">Button 按钮</RouterLink>
             </div>
             <div>
-                <RouterLink to="/components/switch">switch 开关</RouterLink>
+                <RouterLink to="/components/switch">Switch 开关</RouterLink>
             </div>
             <div>
-                <RouterLink to="/components/dialog">dialog 对话框</RouterLink>
+                <RouterLink to="/components/dialog">Dialog 对话框</RouterLink>
             </div>
             <div>
-                <RouterLink to="/components/tabs">tabs 标签页</RouterLink>
+                <RouterLink to="/components/tabs">Tabs 标签页</RouterLink>
             </div>
             <div>
-                <RouterLink to="/components/menu">menu 菜单</RouterLink>
+                <RouterLink to="/components/menu">Menu 菜单</RouterLink>
             </div>
         </div>
     </Transition>

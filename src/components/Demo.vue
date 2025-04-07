@@ -28,11 +28,12 @@
 import { computed, ref } from 'vue';
 import Button from '@/lib/Button.vue'
 import Markdown from './Markdown.vue';
+// @ts-ignore
 import Prism from 'prismjs'
 import 'prismjs/themes/prism-tomorrow.css'
 
 const props = defineProps<{
-    component: Object
+    component: any
 }>()
 const codeVisible = ref(false)
 
@@ -41,8 +42,8 @@ const toggleCode = () => {
 }
 const html = computed(() => {
     if (props.component && props.component.__sourceCode) {
+        // @ts-ignore
         return Prism.highlight(props.component.__sourceCode, Prism.languages.html, 'html')
-
     } else
         return ''
 })

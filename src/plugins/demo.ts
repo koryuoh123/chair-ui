@@ -7,8 +7,6 @@ import fs from 'fs'
  * 最后直接抛出一个立即执行函数的对象，不是组件
  */
 export function demoPlugin(): Plugin {
-  let title = ''
-  let main = ''
   return {
     name: 'vite-plugin-demo',
     transform(code, id) {
@@ -19,23 +17,32 @@ export function demoPlugin(): Plugin {
       if (!demo) {
         return null
       }
-      title = demo?.content || ''
+
+      const title = demo?.content || ''
+      let main = ''
+
       if (demo?.map?.sourcesContent) {
-        // demo?.map?.sourcesContent.splice(0, 1)
         main = demo?.map?.sourcesContent?.join('') || ''
-        main = main.slice(main.indexOf('<template>'), main.length + 1)
+        main = main.slice(main.indexOf('<template>'))
       }
-      // console.log(main)
-      // 处理掉"demo"块,不解析
+
+      // 处理掉"demo"块的导入
       code = code.replace('import block0', '// import block0')
 
-      code =
-        code.slice(0, code.indexOf('_name')) +
-        `_sourceCode:${JSON.stringify(main)},__sourceCodeTitle:${JSON.stringify(title)},` +
-        code.slice(code.indexOf('_name'), code.length + 1)
+      // 找到正确的位置插入代码
+      const nameIndex = code.indexOf('_name')
+      if (nameIndex === -1) {
+        return { code }
+      }
+
+      const beforeName = code.slice(0, nameIndex)
+      const afterName = code.slice(nameIndex)
+
+      const modifiedCode = `${beforeName}_sourceCode:${JSON.stringify(main)},__sourceCodeTitle:${JSON.stringify(title)},${afterName}`
 
       return {
-        code,
+        code: modifiedCode,
+        map: null,
       }
     },
   }

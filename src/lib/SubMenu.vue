@@ -55,8 +55,8 @@ const parentMenuRef = ref<HTMLElement>()
 const instance = getCurrentInstance();// 需要放到这里才能获取到值
 
 const calculateSubMenuPosition = () => {
-    const parentRect = parentMenuRef.value?.getBoundingClientRect()
-    const subMenuRect = subMenuWrapperRef.value?.getBoundingClientRect()
+    const parentRect = parentMenuRef?.value?.getBoundingClientRect()
+    const subMenuRect = subMenuWrapperRef?.value?.getBoundingClientRect()
     if (!parentRect || !subMenuRect || !subMenuWrapperRef.value) {
         throw new Error('parentMenuRef or subMenuWrapperRef is not found')
         return
@@ -93,7 +93,9 @@ const calculateSubMenuPosition = () => {
     }
     // 延迟100ms，让子菜单显示出来，避免空间不够时子菜单撑开了body形成滚动条闪烁
     setTimeout(() => {
-        parentMenuRef.value.style.overflow = 'visible'
+        if (parentMenuRef.value) {
+            parentMenuRef.value.style.overflow = 'visible'
+        }
     }, 100)
 }
 

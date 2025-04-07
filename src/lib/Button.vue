@@ -86,8 +86,8 @@ const themeColor = computed(() => {
 });
 
 const buttonRef = ref<HTMLButtonElement>();
-function getActualBgColor(e) {
-    let currentElement = e
+function getActualBgColor(e: HTMLElement) {
+    let currentElement: HTMLElement | null = e;
     while (currentElement) {
         const bgColor = window.getComputedStyle(currentElement).background
         if (bgColor !== 'transparent' && bgColor !== 'rgba(0, 0, 0, 0)' && bgColor !== 'rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box') {
