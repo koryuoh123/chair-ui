@@ -41,6 +41,7 @@ const toggleCode = () => {
     codeVisible.value = !codeVisible.value
 }
 const html = computed(() => {
+    console.log(props.component)
     if (props.component && props.component.__sourceCode) {
         // @ts-ignore
         return Prism.highlight(props.component.__sourceCode, Prism.languages.html, 'html')

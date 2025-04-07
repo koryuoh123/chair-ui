@@ -21,28 +21,29 @@ export function demoPlugin(): Plugin {
       const title = demo?.content || ''
       let main = ''
 
-      if (demo?.map?.sourcesContent) {
-        main = demo?.map?.sourcesContent?.join('') || ''
-        main = main.slice(main.indexOf('<template>'))
+      // 直接从文件中提取template部分
+      const templateStart = file.indexOf('<template>')
+      const templateEnd = file.lastIndexOf('</template>') + '</template>'.length
+      if (templateStart !== -1 && templateEnd !== -1) {
+        main = file.slice(templateStart, templateEnd)
       }
 
       // 处理掉"demo"块的导入
       code = code.replace('import block0', '// import block0')
 
-      // 找到正确的位置插入代码
-      const nameIndex = code.indexOf('_name')
-      if (nameIndex === -1) {
+      // 在导出前插入代码
+      const exportIndex = code.indexOf('export default')
+      if (exportIndex === -1) {
         return { code }
       }
 
-      const beforeName = code.slice(0, nameIndex)
-      const afterName = code.slice(nameIndex)
+      const beforeExport = code.slice(0, exportIndex)
+      const afterExport = code.slice(exportIndex)
 
-      const modifiedCode = `${beforeName}_sourceCode:${JSON.stringify(main)},__sourceCodeTitle:${JSON.stringify(title)},${afterName}`
+      const modifiedCode = `${beforeExport}_sfc_main.__sourceCode = ${JSON.stringify(main)};\n_sfc_main.__sourceCodeTitle = ${JSON.stringify(title)};\n${afterExport}`
 
       return {
         code: modifiedCode,
-        map: null,
       }
     },
   }
