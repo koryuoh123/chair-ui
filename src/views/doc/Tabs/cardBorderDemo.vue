@@ -6,7 +6,7 @@
                 <Tab-item name="User">User</Tab-item>
                 <Tab-item name="Config">Config</Tab-item>
                 <Tab-item name="Role">Role</Tab-item>
-                <Tab-item name="Task">Task</Tab-item>
+
             </Tabs>
         </div>
     </div>

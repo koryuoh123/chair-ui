@@ -2,9 +2,8 @@
     <div class="wrapper">
         <Topnav class="topnav" />
         <div class="content">
-            <Asidenav v-if="asideVisible" />
+            <Asidenav />
             <div class="main">
-
                 <RouterView />
             </div>
         </div>
@@ -17,12 +16,28 @@ import Topnav from '@/components/Topnav.vue'
 import Asidenav from '@/components/Asidenav.vue'
 import { RouterLink, RouterView } from 'vue-router'
 import { ref, provide, onMounted } from 'vue'
-const asideVisible = ref(true)
+import router from '@/router'
+const asideVisible = ref(false)
 provide('asideVisible', asideVisible)
 
+router.afterEach(() => {
+    const width = document.documentElement.clientWidth
+    if (width <= 500) {
+        console.log(asideVisible?.value)
+        if (asideVisible?.value) {
+            asideVisible.value = false
+        }
+    }
+})
 onMounted(() => {
+    const cw = document.documentElement.clientWidth
+    if (cw <= 500) {
+        asideVisible.value = false
+    } else {
+        asideVisible.value = true
+    }
     window.addEventListener('resize', () => {
-        const cw = document.documentElement.clientWidth
+
         if (cw <= 500) {
             asideVisible.value = false
         } else {

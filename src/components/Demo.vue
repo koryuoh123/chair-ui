@@ -65,6 +65,7 @@ const html = computed(() => {
 
         .demo-component {
             padding: 24px;
+            // overflow-x: hidden;
         }
     }
 

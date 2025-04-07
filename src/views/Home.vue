@@ -1,6 +1,6 @@
 <template>
     <div class="home-wrapper">
-        <Topnav />
+        <!-- <Topnav /> -->
         <div class="content">
             <div class="decoration"></div>
             <div class="introduce-wrapper">
@@ -14,10 +14,8 @@
                 </div>
                 <div class="project-description">Simple and easy to use</div>
                 <div class="project-description">A Vue 3 based component library</div>
-                <Button class="start-button" size="large">
-                    <!-- <span class="chair-button-decoration-border"></span> -->
-                    <RouterLink to="/components">GET STARTED
-                    </RouterLink>
+                <Button class="start-button" size="large" @click="handleStart">
+                    GET STARTED
                 </Button>
             </div>
             <div class="technology-wrapper">
@@ -48,6 +46,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import SvgIcon from '@/components/SvgIcon.vue'
 import Button from '@/lib/Button.vue'
 import { onMounted, onUnmounted } from 'vue'
+import router from '@/router'
 
 // 如果视口小于1024px，则设置html的font-size为100vw/1024*16
 const handleResize = () => {
@@ -71,6 +70,10 @@ onMounted(() => {
 onUnmounted(() => {
     window.removeEventListener('resize', handleResize)
 })
+
+const handleStart = () => {
+    router.push('/guide')
+}
 </script>
 
 <style scoped lang="scss">

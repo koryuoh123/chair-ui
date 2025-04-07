@@ -5,6 +5,7 @@
             <SvgIcon :iconName="parentIsHorizontal ? 'arrow-right-icon' : 'arrow-down-icon'"
                 class="chair-sub-menu-title-icon" :class="{ 'rotate-180': subMenuVisible }" />
         </div>
+
         <Transition name="submenu">
             <div class="chair-sub-menu-items-wrapper" v-if="subMenuVisible"
                 :class="{ 'horizontal': parentIsHorizontal }" ref="subMenuWrapperRef" @mouseenter="onMouseInSubMenu"
@@ -12,6 +13,7 @@
                 <slot></slot>
             </div>
         </Transition>
+
     </div>
 
 </template>
@@ -73,10 +75,10 @@ const calculateSubMenuPosition = () => {
         // 看看右边够不够位置，如果不够，则显示在左边
         // 右边位置 = parentRight
         if ((window.innerWidth - parentRight) > (subMenuWidth + 10)) {
-            console.log('右边够位置')
+            // console.log('右边够位置')
             subMenuWrapperRef.value.style.left = `${parentWidth + 5}px`
         } else {
-            console.log('右边不够位置')
+            // console.log('右边不够位置')
             subMenuWrapperRef.value.style.left = `${-subMenuWidth - 5}px`
         }
 

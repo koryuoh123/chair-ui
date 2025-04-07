@@ -3,9 +3,9 @@
 <template>
     <div class="demo-block">
         <div class="demolist">
-            <div><Button @click="visible = !visible">Open Dialog with customized header</Button></div>
+            <div><Button @click="visible = !visible">Open Dialog</Button></div>
 
-            <Dialog v-model="visible" width="50%" :show-close="false">
+            <Dialog v-model="visible" width="300px" :show-close="false">
                 <span> This is dialog content.</span>
                 <template #header>
                     <div class="my-header-class">

@@ -159,6 +159,7 @@ const onCloseDialog = () => {
             height: 0;
             font-size: 14px;
             color: var(--color-text-light-1);
+            overflow: auto;
         }
 
         >.chair-dialog-footer {

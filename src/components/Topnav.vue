@@ -1,6 +1,6 @@
 <template>
     <div class="topnav">
-        <SvgIcon iconName="aside-icon" class="aside" @click="toggleAsideVisible"></SvgIcon>
+        <SvgIcon v-if="!isHome" iconName="aside-icon" class="aside" @click="toggleAsideVisible"></SvgIcon>
         <div class="logo" v-if="!isHome">
             <img src="@/assets/imgs/logo2.png" alt="logo" />
             <div class="text">chair</div>
@@ -56,7 +56,7 @@ import { useRoute } from 'vue-router'
 
 const route = useRoute();
 const isHome = computed(() => {
-    console.log(route.path);
+    // console.log(route.path);
     return route.path === '/home'
 })
 
