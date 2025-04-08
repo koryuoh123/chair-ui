@@ -3,27 +3,25 @@
 <template>
     <div class="demo-block">
         <div class="demolist">
-            <div><Button @click="visible = !visible">Open Dialog</Button></div>
+            <div>
+                <chair-button @click="visible = !visible">Open Dialog</chair-button>
+            </div>
 
-            <Dialog v-model="visible" width="300px" :show-close="false">
+            <chair-dialog v-model="visible" width="300px" :show-close="false">
                 <span> This is dialog content.</span>
                 <template #header>
                     <div class="my-header-class">
                         <h1>my header</h1>
-                        <Button theme="info" @click="handleClose" size="small">X</Button>
+                        <chair-button theme="info" @click="handleClose" size="small">X</chair-button>
                     </div>
 
                 </template>
-            </Dialog>
+            </chair-dialog>
         </div>
-
     </div>
-
 </template>
 
 <script setup lang='ts'>
-import Dialog from '@/lib/Dialog.vue'
-import Button from '@/lib/Button.vue'
 import { ref } from 'vue'
 const visible = ref(false)
 const handleClose = () => {

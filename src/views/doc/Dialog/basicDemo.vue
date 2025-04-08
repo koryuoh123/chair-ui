@@ -3,39 +3,39 @@
 <template>
     <div class="demo-block">
         <div class="demolist">
-            <div><Button @click="visible = !visible">Click to open the Dialog</Button></div>
+            <div>
+                <chair-button @click="visible = !visible">Click to open the Dialog</chair-button>
+            </div>
 
-            <Dialog v-model="visible" title="Tips" width="50%" top="40vh" :before-close="beforeClose">
+            <chair-dialog v-model="visible" title="Tips" width="50%" top="40vh" :before-close="beforeClose">
                 <span>This is a message</span>
                 <template #footer>
                     <div class="footer">
-                        <Button size="small" @click="visible = false">Cencel</Button>
-                        <Button size="small" theme="primary" @click="visible = false">Confirm</Button>
+                        <chair-button size="small" @click="visible = false">Cencel</chair-button>
+                        <chair-button size="small" theme="primary" @click="visible = false">Confirm</chair-button>
                     </div>
                 </template>
-            </Dialog>
+            </chair-dialog>
         </div>
         <p>close-on-click-overlay 设置为false</p>
         <div class="demolist">
-            <div><Button @click="visible2 = !visible2" theme="info">Click Overlay</Button></div>
-
-            <Dialog v-model="visible2" title="Tips" width="50%" top="40vh" :close-on-click-overlay="false">
+            <div>
+                <chair-button @click="visible2 = !visible2" theme="info">Click Overlay</chair-button>
+            </div>
+            <chair-dialog v-model="visible2" title="Tips" width="50%" top="40vh" :close-on-click-overlay="false">
                 <span>This is a message</span>
                 <template #footer>
                     <div class="footer">
-                        <Button size="small" @click="visible2 = false">Cencel</Button>
-                        <Button size="small" theme="primary" @click="visible2 = false">Confirm</Button>
+                        <chair-button size="small" @click="visible2 = false">Cencel</chair-button>
+                        <chair-button size="small" theme="primary" @click="visible2 = false">Confirm</chair-button>
                     </div>
                 </template>
-            </Dialog>
+            </chair-dialog>
         </div>
     </div>
-
 </template>
 
 <script setup lang='ts'>
-import Dialog from '@/lib/Dialog.vue'
-import Button from '@/lib/Button.vue'
 import { ref } from 'vue'
 const visible = ref(false)
 const visible2 = ref(false)

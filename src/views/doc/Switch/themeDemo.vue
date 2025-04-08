@@ -6,22 +6,21 @@
         <p>默认提供的样式</p>
 
         <div class="demolist">
-            <Switch theme="primary" v-model="checked">Primary</Switch>
-            <Switch theme="success" v-model="checked">Success</Switch>
-            <Switch theme="warning" v-model="checked">Warning</Switch>
-            <Switch theme="danger" v-model="checked">Danger</Switch>
-            <Switch theme="info" v-model="checked">Info</Switch>
+            <chair-switch theme="primary" v-model="checked">Primary</chair-switch>
+            <chair-switch theme="success" v-model="checked">Success</chair-switch>
+            <chair-switch theme="warning" v-model="checked">Warning</chair-switch>
+            <chair-switch theme="danger" v-model="checked">Danger</chair-switch>
+            <chair-switch theme="info" v-model="checked">Info</chair-switch>
         </div>
 
         <p>自定义颜色</p>
 
         <div class="demolist">
-            <Switch mainColor="#b91bb9" subColor="pink" v-model="checked">Modified Color</Switch>
+            <chair-switch mainColor="#b91bb9" subColor="pink" v-model="checked">Modified Color</chair-switch>
         </div>
     </div>
 </template>
 <script setup lang='ts'>
-import Switch from '@/lib/Switch.vue'
 import { ref } from 'vue'
 const checked = ref(false)
 </script>

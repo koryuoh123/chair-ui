@@ -2,18 +2,16 @@
 <template>
     <div class="demo-block">
         <div class="demolist">
-            <Tabs v-model="tabModel1" class="demo-tabs" type="border-card">
-                <Tab-item name="User">User</Tab-item>
-                <Tab-item name="Config">Config</Tab-item>
-                <Tab-item name="Role">Role</Tab-item>
+            <chair-tabs v-model="tabModel1" class="demo-tabs" type="border-card">
+                <chair-tab-item name="User">User</chair-tab-item>
+                <chair-tab-item name="Config">Config</chair-tab-item>
+                <chair-tab-item name="Role">Role</chair-tab-item>
 
-            </Tabs>
+            </chair-tabs>
         </div>
     </div>
 </template>
 <script setup lang='ts'>
-import Tabs from '@/lib/Tabs.vue'
-import TabItem from '@/lib/TabItem.vue'
 import { ref } from 'vue'
 const tabModel1 = ref('User')
 

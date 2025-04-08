@@ -6,15 +6,12 @@
             \n<p>该组件库其实是我为了总结自己这几年的技术经验而写的，全程亲手编写，尽量不采用第三方库，包括您现在看到的这个官网也几乎都是我写的。</p>
             <p>此项目旨在交流学习，所以不太建议您在生产环境中使用。</p>` }}
         </Markdown>
-        <Markdown>{{ `## 安装 \n<p>打开终端运行下列命令：</p> <code>npm install chair-ui</code>
-            <p>或者</p> <code>yarn add chair-ui</code>` }}
+        <Markdown>{{ `## 安装 \n<p>打开终端运行下列命令：</p> <code>npm install chair-ui</code>或者<code>yarn add chair-ui</code>` }}
         </Markdown>
-        <Markdown>{{ `## 开始使用 \n <p>在您的代码中写入下面的diamagnetic</p>
-            \n<code>import {Button, Tabs, Switch, Dialog, Menu} from "chair-ui"</code>
-            <p>就可以使用我提供的组件了</p>` }}
+        <Markdown>{{ `## 开始使用 \n <p>在vue3中使用本库，在main.ts里注册组件，即可全局使用</p>
+            \n<p>` }}
         </Markdown>
-        <Markdown>{{ `### Vue 单文件组件\n <p>代码示例</p>` }}</Markdown>
-        <div>
+        <div style="margin-top: -40px;">
             <pre class="language-html" v-html="code"></pre>
         </div>
     </div>
@@ -25,7 +22,7 @@
 import Prism from 'prismjs';
 import 'prismjs/themes/prism-tomorrow.css';
 import guide from './guide.ts'
-const code = Prism.highlight(guide, Prism.languages.html, 'html')
+const code = Prism.highlight(guide, Prism.languages.javascript, 'javascript')
 
 </script>
 <style lang='scss' scoped>

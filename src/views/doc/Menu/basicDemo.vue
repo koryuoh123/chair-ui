@@ -3,39 +3,37 @@
 
     <div class="demo-block">
         <div class="demolist">
-            <Menu background>
-                <MenuItem>
-                Meat
-                </MenuItem>
-                <SubMenu>
+            <chair-menu background>
+                <chair-menu-item>
+                    Meat
+                </chair-menu-item>
+                <chair-sub-menu>
                     <template #title>
                         Fruits
                     </template>
-                    <MenuItem>apple</MenuItem>
-                    <MenuItem>banana</MenuItem>
-                    <SubMenu>
+                    <chair-menu-item>apple</chair-menu-item>
+                    <chair-menu-item>banana</chair-menu-item>
+                    <chair-sub-menu>
                         <template #title>
                             Fruits
                         </template>
-                        <MenuItem>apple</MenuItem>
-                        <MenuItem>banana</MenuItem>
+                        <chair-menu-item>apple</chair-menu-item>
+                        <chair-menu-item>banana</chair-menu-item>
 
-                    </SubMenu>
-                </SubMenu>
-                <SubMenu>
+                    </chair-sub-menu>
+                </chair-sub-menu>
+                <chair-sub-menu>
                     <template #title>
                         Animals
                     </template>
-                    <MenuItem>dog</MenuItem>
-                    <MenuItem>cat</MenuItem>
-                </SubMenu>
-            </Menu>
+                    <chair-menu-item>dog</chair-menu-item>
+                    <chair-menu-item>cat</chair-menu-item>
+                </chair-sub-menu>
+            </chair-menu>
         </div>
     </div>
 </template>
 <script setup lang='ts'>
-import Menu from '@/lib/Menu.vue'
-import SubMenu from '@/lib/SubMenu.vue'
-import MenuItem from '@/lib/MenuItem.vue'
+
 </script>
 <style lang='scss' scoped></style>

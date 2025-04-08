@@ -97,7 +97,7 @@ const html = computed(() => {
             width: 100%;
             padding: 8px 24px;
             background-color: #201e30;
-            color: var(--color-text-light-1);
+            color: var(--chair-color-text-light-1);
             display: flex;
             justify-content: center;
             align-items: center;

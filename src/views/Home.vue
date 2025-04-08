@@ -1,6 +1,5 @@
 <template>
     <div class="home-wrapper">
-        <!-- <Topnav /> -->
         <div class="content">
             <div class="decoration"></div>
             <div class="introduce-wrapper">
@@ -8,15 +7,14 @@
                 <div class="project-name">
                     <div class="logo">
                         <img src="@/assets/imgs/logo2.png" alt="logo" />
-
                     </div>
                     Chair UI
                 </div>
                 <div class="project-description">Simple and easy to use</div>
                 <div class="project-description">A Vue 3 based component library</div>
-                <Button class="start-button" size="large" @click="handleStart">
+                <chair-button class="start-button" size="large" @click="handleStart">
                     GET STARTED
-                </Button>
+                </chair-button>
             </div>
             <div class="technology-wrapper">
                 <div class="grid-wrapper">
@@ -40,11 +38,6 @@
 </template>
 
 <script setup lang="ts">
-import Topnav from '@/components/Topnav.vue'
-import Asidenav from '@/components/Asidenav.vue'
-import { RouterLink, RouterView } from 'vue-router'
-import SvgIcon from '@/components/SvgIcon.vue'
-import Button from '@/lib/Button.vue'
 import { onMounted, onUnmounted } from 'vue'
 import router from '@/router'
 

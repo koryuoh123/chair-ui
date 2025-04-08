@@ -3,20 +3,19 @@
 <template>
     <div class="demo-block">
         <div class="demolist">
-            <Switch v-model="checked" active-text="显示" inactive-text="隐藏">
+            <chair-switch v-model="checked" active-text="显示" inactive-text="隐藏">
                 <template #active-icon>
                     <SvgIcon iconName="visible-icon" />
                 </template>
                 <template #inactive-icon>
                     <SvgIcon iconName="invisible-icon" />
                 </template>
-            </Switch>
+            </chair-switch>
         </div>
     </div>
 </template>
 
 <script setup lang='ts'>
-import Switch from '@/lib/Switch.vue'
 import { ref } from 'vue'
 const checked = ref(false)
 </script>

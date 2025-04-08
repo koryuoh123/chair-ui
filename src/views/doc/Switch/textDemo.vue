@@ -3,22 +3,22 @@
 <template>
     <div class="demo-block">
         <div class="demolist">
-            <Switch v-model="checked" active-text="开启" inactive-text="关闭"></Switch>
+            <chair-switch v-model="checked" active-text="开启" inactive-text="关闭"></chair-switch>
 
-            <Switch v-model="checked" theme="success" active-text="是" inactive-text="否"></Switch>
+            <chair-switch v-model="checked" theme="success" active-text="是" inactive-text="否"></chair-switch>
 
-            <Switch v-model="checked" theme="warning" active-text="Pay by month" inactive-text="Pay by year"></Switch>
+            <chair-switch v-model="checked" theme="warning" active-text="Pay by month"
+                inactive-text="Pay by year"></chair-switch>
         </div>
         <p>不展示文字</p>
         <div class="demolist">
-            <Switch v-model="checked" :text-visible="false">Default</Switch>
+            <chair-switch v-model="checked" :text-visible="false">Default</chair-switch>
         </div>
     </div>
 
 </template>
 
 <script setup lang='ts'>
-import Switch from '@/lib/Switch.vue'
 import { ref } from 'vue'
 const checked = ref(false)
 </script>

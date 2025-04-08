@@ -82,11 +82,11 @@ const toggleAsideVisible = () => {
 .asidenav {
     width: 200px;
     height: 100%;
-    color: var(--color-text-light-1);
+    color: var(--chair-color-text-light-1);
     display: flex;
     flex-direction: column;
     gap: 6px;
-    background-color: var(--color-bg-dark-dialog);
+    background-color: var(--chair-bg-dark-dialog);
     border-right: 1px solid #2B283E;
     padding: 16px;
 
@@ -100,12 +100,12 @@ const toggleAsideVisible = () => {
 
 
         &:hover {
-            color: var(--color-text-light-2);
+            color: var(--chair-color-text-light-2);
         }
     }
 
     .router-link-active {
-        color: var(--color-text-primary);
+        color: var(--chair-color-text-primary);
     }
 
     h2 {

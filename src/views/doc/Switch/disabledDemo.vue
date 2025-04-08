@@ -3,9 +3,9 @@
 <template>
     <div class="demo-block">
         <div class="demolist">
-            <Switch v-model="checked" disabled></Switch>
+            <chair-switch v-model="checked" disabled></chair-switch>
 
-            <Switch v-model="checked2"></Switch>
+            <chair-switch v-model="checked2"></chair-switch>
 
         </div>
     </div>
@@ -13,7 +13,6 @@
 </template>
 
 <script setup lang='ts'>
-import Switch from '@/lib/Switch.vue'
 import { ref } from 'vue'
 const checked = ref(true)
 const checked2 = ref(false)

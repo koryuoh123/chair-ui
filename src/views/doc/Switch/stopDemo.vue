@@ -3,9 +3,10 @@
 <template>
     <div class="demo-block">
         <div class="demolist">
-            <Switch v-model="checked" :loading="loading" :before-change="syncSwitch"></Switch>
+            <chair-switch v-model="checked" :loading="loading" :before-change="syncSwitch"></chair-switch>
 
-            <Switch v-model="checked2" :loading="loading2" theme="warning" :before-change="syncSwitch2"></Switch>
+            <chair-switch v-model="checked2" :loading="loading2" theme="warning"
+                :before-change="syncSwitch2"></chair-switch>
         </div>
 
     </div>
@@ -13,7 +14,6 @@
 </template>
 
 <script setup lang='ts'>
-import Switch from '@/lib/Switch.vue'
 import { ref } from 'vue'
 const checked = ref(true)
 const loading = ref(false)

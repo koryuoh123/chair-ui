@@ -3,15 +3,14 @@
 <template>
     <div class="demo-block">
         <div class="demolist">
-            <Switch size="small" v-model="checked">Small</Switch>
-            <Switch v-model="checked">Default</Switch>
-            <Switch size="large" v-model="checked">Large</Switch>
+            <chair-switch size="small" v-model="checked"></chair-switch>
+            <chair-switch v-model="checked"></chair-switch>
+            <chair-switch size="large" v-model="checked"></chair-switch>
         </div>
     </div>
 </template>
 
 <script setup lang='ts'>
-import Switch from '@/lib/Switch.vue'
 import { ref } from 'vue'
 const checked = ref(false)
 </script>

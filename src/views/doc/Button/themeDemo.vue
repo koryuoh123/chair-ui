@@ -6,22 +6,21 @@
         <p>默认提供的样式</p>
 
         <div class="demolist">
-            <Button>Default</Button>
-            <Button theme="primary">Primary</Button>
-            <Button theme="success">Success</Button>
-            <Button theme="warning">Warning</Button>
-            <Button theme="danger">Danger</Button>
-            <Button theme="info">Info</Button>
+            <chair-button>Default</chair-button>
+            <chair-button theme="primary">Primary</chair-button>
+            <chair-button theme="success">Success</chair-button>
+            <chair-button theme="warning">Warning</chair-button>
+            <chair-button theme="danger">Danger</chair-button>
+            <chair-button theme="info">Info</chair-button>
         </div>
 
         <p>自定义颜色</p>
 
         <div class="demolist">
-            <Button color="#b91bb9">Modified Color</Button>
+            <chair-button color="#b91bb9">Modified Color</chair-button>
         </div>
     </div>
 </template>
 <script setup lang='ts'>
-import Button from '@/lib/Button.vue'
 </script>
 <style lang='scss' scoped></style>

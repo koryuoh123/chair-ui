@@ -4,16 +4,15 @@
     <div class="demo-block">
         <div class="demolist">
             <!-- small -->
-            <Button size="small">Small</Button>
+            <chair-button size="small">Small</chair-button>
             <!-- default -->
-            <Button>Default</Button>
+            <chair-button>Default</chair-button>
             <!-- large -->
-            <Button size="large">Large</Button>
+            <chair-button size="large">Large</chair-button>
         </div>
     </div>
 </template>
 
 <script setup lang='ts'>
-import Button from '@/lib/Button.vue'
 </script>
 <style lang='scss' scoped></style>

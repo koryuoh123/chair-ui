@@ -1,14 +1,23 @@
-const guide = `
-<template>
-    <div>
-        <Button>按钮</Button>
-    </div>
-</template>
+const guide = `import { createApp } from 'vue'
+import App from './App.vue'
 
-<script setup lang='ts'>
-import {Button, Tabs, Switch, Dialog, Menu} from 'chair-ui'
+// 引入样式
+import "chair-ui/style.css"
 
+const app = createApp(App)
 
-</script>`
+// 全量引入组件
+import chairUi from "chair-ui"
+app.use(chairUi)
+
+/*
+ *按需引入组件，注意大小写。
+ * Button,Switch,Dialog,Tabs,TabItem,Menu,SubMenu,MenuItem
+ */ 
+
+// app.use(chairUi, ['Button'])
+
+app.mount('#app')
+`
 
 export default guide

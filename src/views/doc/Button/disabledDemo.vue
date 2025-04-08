@@ -2,21 +2,20 @@
 <template>
     <div class="demo-block">
         <div class="demolist">
-            <Button disabled>Default</Button>
+            <chair-button disabled>Default</chair-button>
 
-            <Button disabled theme="primary">Primary</Button>
+            <chair-button disabled theme="primary">Primary</chair-button>
 
-            <Button disabled theme="success">Success</Button>
+            <chair-button disabled theme="success">Success</chair-button>
 
-            <Button disabled theme="warning">Warning</Button>
+            <chair-button disabled theme="warning">Warning</chair-button>
 
-            <Button disabled theme="danger">Danger</Button>
+            <chair-button disabled theme="danger">Danger</chair-button>
 
-            <Button disabled theme="info">Info</Button>
+            <chair-button disabled theme="info">Info</chair-button>
         </div>
     </div>
 </template>
 <script setup lang='ts'>
-import Button from '@/lib/Button.vue'
 </script>
 <style lang='scss' scoped></style>

@@ -3,31 +3,27 @@
 <template>
     <div class="demo-block">
         <div class="demolist">
-            <div><Button @click="visible = !visible"> dialog</Button></div>
+            <div>
+                <chair-button @click="visible = !visible"> dialog</chair-button>
+            </div>
 
-            <Dialog v-model="visible" width="50%" title="dialog1">
+            <chair-dialog v-model="visible" width="50%" title="dialog1">
                 <div style="margin-top:30px;">
-                    <Button theme="success" @click="visible2 = !visible2">open another dialog</Button>
+                    <chair-button theme="success" @click="visible2 = !visible2">open another dialog</chair-button>
                 </div>
-                <Dialog v-model="visible2" width="220px" append-to-body title="dialog2" top="30vh">
+                <chair-dialog v-model="visible2" width="220px" append-to-body title="dialog2" top="30vh">
                     <span> This is dialog content2. </span>
-                </Dialog>
-            </Dialog>
+                </chair-dialog>
+            </chair-dialog>
         </div>
-
     </div>
-
 </template>
 
 <script setup lang='ts'>
-import Dialog from '@/lib/Dialog.vue'
-import Button from '@/lib/Button.vue'
 import { ref } from 'vue'
 const visible = ref(false)
 const visible2 = ref(false)
-const handleClose = () => {
-    visible.value = false
-}
+
 
 </script>
 <style lang='scss' scoped>
