@@ -11,4 +11,4 @@
 
 ## 运行文档网站
 
-在根目录<code>npm install</code>
+在根目录<code>npm install</code>，然后<code>npm run dev</code>
