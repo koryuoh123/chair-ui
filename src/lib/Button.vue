@@ -37,9 +37,10 @@
  * 然后通过v-bind="$attrs"将父组件绑定的属性绑定到button上
  **/
 defineOptions({
+    name: 'chair-button',
     inheritAttrs: false
 })
-import SvgIcon from '@/components/SvgIcon.vue';
+
 /**
  * 通过useAttrs获取父组件传递的属性
  * 通过解构获取size属性，然后通过rest获取剩余属性
@@ -75,11 +76,11 @@ const themeColor = computed(() => {
     }
     // 如果没有自定义颜色，则使用主题对应的CSS变量
     const themeMap: Record<string, string> = {
-        default: 'var(--color-text-light-1)',
-        primary: 'var(--color-text-primary)',
+        default: 'var(--chair-color-text-light-1)',
+        primary: 'var(--chair-color-text-primary)',
         success: 'var(--chair-success-color)',
         warning: 'var(--chair-warning-color)',
-        danger: 'var(--color-text-danger)',
+        danger: 'var(--chair-color-text-danger)',
         info: 'var(--chair-info-color)'
     };
     return themeMap[props.theme] || themeMap.default;
@@ -280,11 +281,11 @@ $wpadding: 18px;
 
         // 主题样式
         &.chair-theme-default {
-            @include theme-style(var(--color-text-light-1));
+            @include theme-style(var(--chair-color-text-light-1));
         }
 
         &.chair-theme-primary {
-            @include theme-style(var(--color-text-primary));
+            @include theme-style(var(--chair-color-text-primary));
         }
 
         &.chair-theme-success {
@@ -296,7 +297,7 @@ $wpadding: 18px;
         }
 
         &.chair-theme-danger {
-            @include theme-style(var(--color-text-danger));
+            @include theme-style(var(--chair-color-text-danger));
         }
 
         &.chair-theme-info {

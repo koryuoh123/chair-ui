@@ -1,0 +1,21 @@
+{
+  "name": "chair-ui",
+  "version": "0.0.4",
+  "private": false,
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/chair-ui.umd.cjs",
+  "module": "./dist/chair-ui.js",
+  "exports": {
+    ".": {
+      "import": "./dist/chair-ui.js",
+      "require": "./dist/chair-ui.umd.cjs"
+    },
+    "./style.css": "./dist/chair-ui.css"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.13"
+  }
+}

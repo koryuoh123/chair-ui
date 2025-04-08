@@ -41,6 +41,10 @@
 
 <script setup lang="ts">
 import { computed, onMounted, ref, useAttrs } from 'vue';
+import SvgIcon from '@/components/SvgIcon.vue';
+defineOptions({
+    name: 'chair-switch',
+})
 
 // 使用了defineModel宏，可以在模板中使用v-model指令，省略了emit和props
 const checked = defineModel<boolean>({
@@ -96,10 +100,10 @@ const mainColor = computed(() => {
     }
     // 如果没有自定义颜色，则使用主题对应的CSS变量
     const themeMap: Record<string, string> = {
-        primary: 'var(--color-text-primary)',
+        primary: 'var(--chair-color-text-primary)',
         success: 'var(--chair-success-color)',
         warning: 'var(--chair-warning-color)',
-        danger: 'var(--color-text-danger)',
+        danger: 'var(--chair-color-text-danger)',
         info: 'var(--chair-info-color)',
 
     };
@@ -263,7 +267,7 @@ onMounted(() => {
     }
 
     &.chair-theme-primary {
-        @include theme-style(var(--color-text-primary), var(--sub-color, --buttonbg));
+        @include theme-style(var(--chair-color-text-primary), var(--sub-color, --buttonbg));
     }
 
     &.chair-theme-success {
@@ -275,7 +279,7 @@ onMounted(() => {
     }
 
     &.chair-theme-danger {
-        @include theme-style(var(--color-text-danger), var(--sub-color, --buttonbg));
+        @include theme-style(var(--chair-color-text-danger), var(--sub-color, --buttonbg));
     }
 
     &.chair-theme-info {

@@ -4,6 +4,9 @@
     </div>
 </template>
 <script setup lang='ts'>
+defineOptions({
+    name: 'chair-menu',
+})
 const props = withDefaults(defineProps<{
     background?: boolean
 }>(), {
@@ -21,7 +24,7 @@ const props = withDefaults(defineProps<{
 
     &.default-background {
         height: 45px;
-        background-color: var(--color-bg-dark-1);
+        background-color: var(--chair-bg-dark-1);
         font-size: 16px;
     }
 }

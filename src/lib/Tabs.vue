@@ -19,6 +19,10 @@
 <script setup lang='ts'>
 import { computed, ref, useSlots, watchEffect } from 'vue';
 import TabItem from './TabItem.vue';
+
+defineOptions({
+    name: 'chair-tabs',
+})
 // 用户希望管理的model，如果无指定name，则用下标。
 const vmodel = defineModel<number | string>({ required: true })
 const props = withDefaults(defineProps<{
@@ -95,15 +99,16 @@ defineExpose({
 }
 
 .chair-tabs-wrapper {
+    min-width: 100px;
     width: 100%;
     min-height: 150px;
     display: flex;
     flex-direction: column;
-    background-color: var(--color-bg-dark-dialog);
+    background-color: var(--chair-bg-dark-dialog);
 
 
     .chair-tabs-nav-wrapper {
-        border-bottom: 1px solid var(--color-text-light-3);
+        border-bottom: 1px solid var(--chair-color-text-light-3);
         min-height: 40px;
     }
 
@@ -123,7 +128,7 @@ defineExpose({
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            color: var(--color-text-light-1);
+            color: var(--chair-color-text-light-1);
 
         }
     }
@@ -141,12 +146,12 @@ defineExpose({
             left: 0;
             top: 1px;
             z-index: 1;
-            background-color: var(--color-bg-dark-dialog);
+            background-color: var(--chair-bg-dark-dialog);
 
 
             :nth-child(1) {
                 border-top-left-radius: 2px;
-                border-left: 1px solid var(--color-text-light-3);
+                border-left: 1px solid var(--chair-color-text-light-3);
             }
 
             :nth-last-child(2) {
@@ -156,13 +161,13 @@ defineExpose({
 
         .chair-tabs-nav-item {
             // border: 1px solid transparent;
-            border: 1px solid var(--color-text-light-3);
+            border: 1px solid var(--chair-color-text-light-3);
             border-left: none;
             transition: all 0.3s ease-in-out;
 
             &.active {
-                color: var(--color-text-primary);
-                // border-bottom: var(--color-bg-dark-dialog);
+                color: var(--chair-color-text-primary);
+                // border-bottom: var(--chair-bg-dark-dialog);
                 border-bottom-color: transparent;
             }
         }
@@ -170,7 +175,7 @@ defineExpose({
         .chair-tabs-content {
             @include chair-tabs-content;
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-            color: var(--color-text-light-1);
+            color: var(--chair-color-text-light-1);
         }
     }
 
@@ -179,14 +184,14 @@ defineExpose({
 
         .chair-tabs-nav {
             position: relative;
-            // border-bottom: 1px solid var(--color-text-light-2);
+            // border-bottom: 1px solid var(--chair-color-text-light-2);
 
             .chair-tabs-nav-item {
 
 
                 &.active {
-                    color: var(--color-text-primary);
-                    // border-bottom: 1px solid var(--color-text-primary);
+                    color: var(--chair-color-text-primary);
+                    // border-bottom: 1px solid var(--chair-color-text-primary);
                 }
             }
 
@@ -196,24 +201,24 @@ defineExpose({
                 left: 0;
                 width: 0;
                 height: 2px;
-                background-color: var(--color-text-primary);
+                background-color: var(--chair-color-text-primary);
                 transition: all 0.3s ease-in-out;
             }
         }
 
         .chair-tabs-content {
             @include chair-tabs-content;
-            color: var(--color-text-light-1);
+            color: var(--chair-color-text-light-1);
         }
     }
 
     &.chair-tabs-nav-border-card {
         .chair-tabs-nav-wrapper {
-            border-top: 1px solid var(--color-text-light-3);
-            border-left: 1px solid var(--color-text-light-3);
-            border-right: 1px solid var(--color-text-light-3);
+            border-top: 1px solid var(--chair-color-text-light-3);
+            border-left: 1px solid var(--chair-color-text-light-3);
+            border-right: 1px solid var(--chair-color-text-light-3);
             position: relative;
-            background-color: var(--color-bg-dark-2);
+            background-color: var(--chair-bg-dark-2);
         }
 
         .chair-tabs-nav {
@@ -225,16 +230,16 @@ defineExpose({
 
 
             .chair-tabs-nav-item {
-                border-bottom: 1px solid var(--color-text-light-3);
+                border-bottom: 1px solid var(--chair-color-text-light-3);
                 transition: background-color 0.3s ease-in-out;
             }
 
             .chair-tabs-nav-item.active {
-                background-color: var(--color-bg-dark-dialog);
-                border-left: 1px solid var(--color-text-light-3);
-                border-right: 1px solid var(--color-text-light-3);
+                background-color: var(--chair-bg-dark-dialog);
+                border-left: 1px solid var(--chair-color-text-light-3);
+                border-right: 1px solid var(--chair-color-text-light-3);
                 border-bottom: transparent;
-                color: var(--color-text-primary);
+                color: var(--chair-color-text-primary);
             }
 
             :nth-child(1) {
@@ -251,13 +256,13 @@ defineExpose({
         }
 
         .chair-tabs-content {
-            border-left: 1px solid var(--color-text-light-3);
-            border-right: 1px solid var(--color-text-light-3);
-            border-bottom: 1px solid var(--color-text-light-3);
+            border-left: 1px solid var(--chair-color-text-light-3);
+            border-right: 1px solid var(--chair-color-text-light-3);
+            border-bottom: 1px solid var(--chair-color-text-light-3);
 
             @include chair-tabs-content;
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-            color: var(--color-text-light-1);
+            color: var(--chair-color-text-light-1);
 
         }
 

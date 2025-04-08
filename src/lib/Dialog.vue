@@ -29,7 +29,10 @@
 </template>
 <script setup lang='ts'>
 import { ref, watch } from 'vue';
-
+import SvgIcon from '@/components/SvgIcon.vue';
+defineOptions({
+    name: 'chair-dialog',
+})
 
 const props = withDefaults(defineProps<{
     closeOnClickOverlay?: boolean;// 是否在点击遮罩层时关闭对话框
@@ -110,7 +113,7 @@ const onCloseDialog = () => {
     width: 500px;
 
     .chair-dialog {
-        background-color: var(--color-bg-dark-dialog);
+        background-color: var(--chair-bg-dark-dialog);
         border-radius: 10px;
         display: flex;
         flex-direction: column;
@@ -126,7 +129,7 @@ const onCloseDialog = () => {
             padding: 0 0 8px 0;
 
             display: flex;
-            color: var(--color-text-light-1);
+            color: var(--chair-color-text-light-1);
             // align-items: center;
             position: relative;
             // border: 1px solid red;
@@ -134,7 +137,7 @@ const onCloseDialog = () => {
             .chair-dialog-title {
                 font-size: 18px;
                 font-weight: 600;
-                color: var(--color-text-light-1);
+                color: var(--chair-color-text-light-1);
             }
 
             .chair-dialog-close {
@@ -142,13 +145,13 @@ const onCloseDialog = () => {
                 right: 0;
                 top: 0;
                 cursor: pointer;
-                color: var(--color-text-light-2);
+                color: var(--chair-color-text-light-2);
                 height: 14px;
                 width: 14px;
                 transition: color 0.3s;
 
                 &:hover {
-                    color: var(--color-text-primary);
+                    color: var(--chair-color-text-primary);
                 }
             }
         }
@@ -158,8 +161,9 @@ const onCloseDialog = () => {
             flex-grow: 1;
             height: 0;
             font-size: 14px;
-            color: var(--color-text-light-1);
+            color: var(--chair-color-text-light-1);
             overflow: auto;
+            padding-left: 2px;
         }
 
         >.chair-dialog-footer {

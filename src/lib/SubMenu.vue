@@ -20,8 +20,11 @@
 <script setup lang='ts'>
 import { computed, nextTick, onMounted, onBeforeMount, ref, useSlots, provide, inject, getCurrentInstance } from 'vue';
 import MenuItem from './MenuItem.vue';
-import SubMenu from './SubMenu.vue';
 import SvgIcon from '@/components/SvgIcon.vue';
+
+defineOptions({
+    name: 'chair-sub-menu',
+})
 
 const props = withDefaults(defineProps<{
     type?: string
@@ -150,7 +153,7 @@ const onMouseOutSubMenu = () => {
 <style lang='scss'>
 .chair-sub-menu {
     position: relative;
-    color: var(--color-menu-text);
+    color: var(--chair-color-menu-text);
     overflow: hidden;
     font-size: inherit;
     z-index: 100;
@@ -190,7 +193,7 @@ const onMouseOutSubMenu = () => {
         display: flex;
         flex-direction: column;
         gap: 10px;
-        background-color: var(--color-bg-dark);
+        background-color: var(--chair-bg-dark-1);
         min-width: 100px;
         border-radius: 4px;
         border: 1px solid #2B293A;

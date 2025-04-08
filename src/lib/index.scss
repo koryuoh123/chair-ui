@@ -31,8 +31,6 @@
     left: 0;
     min-height: 0.8em;
     min-width: 0.8em;
-    // height: 100%;
-    // width: 100%;
     position: relative;
     border-radius: 50%;
     background: linear-gradient(
@@ -79,72 +77,24 @@
     }
   }
 }
-/* color palette from <https://github.com/vuejs/theme> */
+
 :root {
-  --vt-c-white: #ffffff;
-  --vt-c-white-soft: #f8f8f8;
-  --vt-c-white-mute: #f2f2f2;
-
-  --vt-c-black: #181818;
-  --vt-c-black-soft: #222222;
-  --vt-c-black-mute: #282828;
-
-  --vt-c-indigo: #2c3e50;
-
-  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
-
-  --vt-c-text-light-1: var(--vt-c-indigo);
-  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-  --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
-
   --chair-primary-color: #9384e5;
   --chair-success-color: #67c23a;
   --chair-danger-color: red;
   --chair-warning-color: orange;
   --chair-info-color: yellow;
-  // --chair-info-color: #909399;
+
   --chair-border-color: #dcdfe6;
-  --color-text-light-1: #a29eb4;
-  --color-text-light-2: #73707e;
-  --color-text-light-3: #4c4a53;
-}
 
-/* semantic color variables for this project */
-:root {
-  --color-background: var(--vt-c-white);
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
+  --chair-color-text-light-1: #a29eb4;
+  --chair-color-text-light-2: #73707e;
+  --chair-color-text-light-3: #4c4a53;
+  --chair-color-text-primary: var(--chair-primary-color);
+  --chair-color-text-danger: var(--chair-danger-color);
+  --chair-color-menu-text: var(--chair-color-text-light-1);
 
-  --color-border: var(--vt-c-divider-light-2);
-  --color-border-hover: var(--vt-c-divider-light-1);
-
-  --color-heading: var(--vt-c-text-light-1);
-  /* --color-text: var(--vt-c-text-light-1); */
-
-  --section-gap: 160px;
-
-  --color-text-primary: var(--chair-primary-color);
-  --color-text-danger: var(--chair-danger-color);
-  --color-menu-text: var(--color-text-light-1);
-  --color-bg-dark: #181627;
-  --color-bg-dark-2: #24232f;
-  --color-bg-dark-dialog: #1c1a2a;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
-
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
-
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
-  }
+  --chair-bg-dark-1: #181627;
+  --chair-bg-dark-2: #24232f;
+  --chair-bg-dark-dialog: #1c1a2a;
 }
